@@ -10,7 +10,7 @@ SummonerProfileChampionJoiner.destroy_all
 
 champions_array.each do |champion|
   champ = champion.to_a[1]
-  Champion.create(name: champ['name']) #need to add each attribute
+  Champion.create(name: champ['name'], title: champ['title'], stats: champ['stats']) #need different API for spells
 end
 
 sp1 = SummonerProfile.create(name: 'noobSummoner')
