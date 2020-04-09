@@ -1,0 +1,2 @@
+class SummonerProfilesController < ApplicationController
+end

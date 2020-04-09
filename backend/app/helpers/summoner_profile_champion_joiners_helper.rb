@@ -1,0 +1,2 @@
+module SummonerProfileChampionJoinersHelper
+end
