@@ -1,8 +1,5 @@
 import React from 'react'
 import SummonerContainer from './SummonerContainer.js'
-import MatchContainer from './MatchContainer.js'
-import ChampionCard from '../components/ChampionCard.js' // just to test
-import SearchBar from '../components/SearchBar.js'
 import ChampionsContainer from './ChampionsContainer.js'
 
 
@@ -35,7 +32,7 @@ export default class MainContainer extends React.Component {
   }
 
   searchChampions = () => {
-    
+
   }
 
   render() {
@@ -44,7 +41,6 @@ export default class MainContainer extends React.Component {
         MainContainer
         <SearchBar />
         <SummonerContainer />
-        <MatchContainer />
         <ChampionsContainer
           champions={this.state.displayChampions} />
 

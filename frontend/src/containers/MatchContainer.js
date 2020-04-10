@@ -4,7 +4,7 @@ export default class MatchContainer extends React.Component {
   render() {
     return(
       <div>
-        MatchContainer  
+        MatchContainer
       </div>
     )
   }
