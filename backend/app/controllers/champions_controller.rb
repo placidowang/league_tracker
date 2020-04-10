@@ -1,4 +1,5 @@
 class ChampionsController < ApplicationController
+  skip_before_action :logged_in?
   before_action :set_champion
 
   def index
