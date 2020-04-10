@@ -7,11 +7,17 @@ export default class NavBar extends React.Component {
     return(
       <div>
         <SearchBar />
-        <button>
+        <button >
+          <NavLink to = "/summoner">Summoner</NavLink>
+        </button>
+        <button >
+          <NavLink to = "/champions">Champions</NavLink>
+        </button>
+        <button onClick= {() => localStorage.clear()}>
           <NavLink to = "/login">Login</NavLink>
         </button>
         <button onClick= {() => localStorage.clear()}>
-          <NavLink to = "/login">Logout</NavLink>
+          LogOut
         </button>
       </div>
     )
