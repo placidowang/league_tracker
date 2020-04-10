@@ -3,6 +3,8 @@ import SummonerContainer from './SummonerContainer.js'
 import MatchContainer from './MatchContainer.js'
 import ChampionCard from '../components/ChampionCard.js' // just to test
 import SearchBar from '../components/SearchBar.js'
+import ChampionsContainer from './ChampionsContainer.js'
+
 
 export default class MainContainer extends React.Component {
   constructor() {
@@ -23,8 +25,17 @@ export default class MainContainer extends React.Component {
         champions: champions,
         displayChampions: champions
       },
-      ()=>{console.log(this.state.champions)})
+      // ()=>{console.log(this.state.champions)}
+      )
     })
+  }
+
+  sortChampions = () => {
+
+  }
+
+  searchChampions = () => {
+    
   }
 
   render() {
@@ -34,10 +45,9 @@ export default class MainContainer extends React.Component {
         <SearchBar />
         <SummonerContainer />
         <MatchContainer />
-        
-        {/* next line is just to test backend/frontend communication */}
-        {this.state.displayChampions ?
-          this.state.displayChampions.map(champion => <ChampionCard champion={champion} />) : null}
+        <ChampionsContainer
+          champions={this.state.displayChampions} />
+
       </div>
     )
   }
