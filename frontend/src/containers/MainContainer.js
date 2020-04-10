@@ -39,7 +39,6 @@ export default class MainContainer extends React.Component {
     return(
       <div>
         MainContainer
-        <SearchBar />
         <SummonerContainer />
         <ChampionsContainer
           champions={this.state.displayChampions} />
