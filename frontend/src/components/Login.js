@@ -30,7 +30,14 @@ export default class Login extends Component {
         }
         fetch("http://localhost:3000/user_login",obj)
         .then(res => res.json())
-        .then(data => data.errors ? this.setState({status: data.errors}) : this.setState({status: "Login"}))
+        .then(data => {
+            if(data.errors){
+                this.setState({status: data.errors})
+            }else{
+                this.setState({status: "Login"})
+                localStorage.token = data.token
+            }
+        })
     }
 
     render() {
