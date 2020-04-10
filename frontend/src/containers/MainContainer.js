@@ -1,8 +1,8 @@
 import React from 'react'
-import NavBar from '../components/NavBar.js'
 import SummonerContainer from './SummonerContainer.js'
 import MatchContainer from './MatchContainer.js'
 import ChampionCard from '../components/ChampionCard.js' // just to test
+import SearchBar from '../components/SearchBar.js'
 
 export default class MainContainer extends React.Component {
   constructor() {
@@ -31,7 +31,7 @@ export default class MainContainer extends React.Component {
     return(
       <div>
         MainContainer
-        <NavBar />
+        <SearchBar />
         <SummonerContainer />
         <MatchContainer />
         
