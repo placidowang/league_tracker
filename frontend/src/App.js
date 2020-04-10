@@ -1,5 +1,5 @@
 import React from 'react';
-// import './App.css'; // came with create-react-app, can remove
+import './App.css';
 import MainContainer from './containers/MainContainer.js'
 
 function App() {

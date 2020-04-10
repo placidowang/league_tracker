@@ -1,7 +1,6 @@
 import React from 'react'
 import NavBar from '../components/NavBar.js'
 import SummonerContainer from './SummonerContainer.js'
-import MatchContainer from './MatchContainer.js'
 import ChampionsContainer from './ChampionsContainer.js'
 
 export default class MainContainer extends React.Component {
@@ -33,7 +32,7 @@ export default class MainContainer extends React.Component {
   }
 
   searchChampions = () => {
-    
+
   }
 
   render() {
@@ -42,7 +41,6 @@ export default class MainContainer extends React.Component {
         MainContainer
         <NavBar />
         <SummonerContainer />
-        <MatchContainer />
         <ChampionsContainer
           champions={this.state.displayChampions} />
 

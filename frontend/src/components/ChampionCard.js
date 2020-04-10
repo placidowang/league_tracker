@@ -2,7 +2,6 @@ import React from 'react'
 import { Grid, Image } from 'semantic-ui-react'
 
 const ChampionCard = (props) => {
-  console.log(props.champion.partype)
   return(
     <Grid.Column>
       <Image src={props.champion.icon_image} />
