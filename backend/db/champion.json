@@ -11,7 +11,7 @@
         "magic": 3,
         "difficulty": 4
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Tank"
       ],
@@ -150,7 +150,7 @@
         "magic": 4,
         "difficulty": 9
       },
-      "type": [
+      "roles": [
         "Fighter"
       ],
       "partype": "Mana",
@@ -299,7 +299,7 @@
         "magic": 8,
         "difficulty": 7
       },
-      "type": [
+      "roles": [
         "Assassin"
       ],
       "partype": "Energy",
@@ -460,7 +460,7 @@
         "magic": 1,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Tank"
       ],
@@ -624,7 +624,7 @@
         "magic": 3,
         "difficulty": 6
       },
-      "type": [
+      "roles": [
         "Assassin"
       ],
       "partype": "Mana",
@@ -757,7 +757,7 @@
         "magic": 8,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Mage",
         "Assassin"
       ],
@@ -915,7 +915,7 @@
         "magic": 5,
         "difficulty": 8
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Tank"
       ],
@@ -1054,7 +1054,7 @@
         "magic": 6,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Mage"
       ],
@@ -1208,7 +1208,7 @@
         "magic": 3,
         "difficulty": 3
       },
-      "type": [
+      "roles": [
         "Marksman"
       ],
       "partype": "Mana",
@@ -1360,7 +1360,7 @@
         "magic": 4,
         "difficulty": 6
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Tank"
       ],
@@ -1505,7 +1505,7 @@
         "magic": 8,
         "difficulty": 8
       },
-      "type": [
+      "roles": [
         "Mage",
         "Support"
       ],
@@ -1643,7 +1643,7 @@
         "magic": 3,
         "difficulty": 4
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Tank"
       ],
@@ -1768,7 +1768,7 @@
         "magic": 5,
         "difficulty": 7
       },
-      "type": [
+      "roles": [
         "Tank",
         "Support"
       ],
@@ -1935,7 +1935,7 @@
         "magic": 8,
         "difficulty": 3
       },
-      "type": [
+      "roles": [
         "Tank",
         "Mage"
       ],
@@ -2090,7 +2090,7 @@
         "magic": 1,
         "difficulty": 10
       },
-      "type": [
+      "roles": [
         "Marksman"
       ],
       "partype": "Mana",
@@ -2207,7 +2207,7 @@
         "magic": 5,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Assassin"
       ],
@@ -2358,7 +2358,7 @@
         "magic": 7,
         "difficulty": 7
       },
-      "type": [
+      "roles": [
         "Support",
         "Mage"
       ],
@@ -2481,7 +2481,7 @@
         "magic": 7,
         "difficulty": 7
       },
-      "type": [
+      "roles": [
         "Support",
         "Mage"
       ],
@@ -2636,7 +2636,7 @@
         "magic": 7,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Assassin"
       ],
@@ -2793,7 +2793,7 @@
         "magic": 3,
         "difficulty": 7
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Marksman"
       ],
@@ -2929,7 +2929,7 @@
         "magic": 6,
         "difficulty": 6
       },
-      "type": [
+      "roles": [
         "Marksman",
         "Mage"
       ],
@@ -3064,7 +3064,7 @@
         "magic": 4,
         "difficulty": 6
       },
-      "type": [
+      "roles": [
         "Marksman"
       ],
       "partype": "Mana",
@@ -3210,7 +3210,7 @@
         "magic": 4,
         "difficulty": 7
       },
-      "type": [
+      "roles": [
         "Marksman"
       ],
       "partype": "Mana",
@@ -3336,7 +3336,7 @@
         "magic": 8,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Mage",
         "Support"
       ],
@@ -3488,7 +3488,7 @@
         "magic": 10,
         "difficulty": 7
       },
-      "type": [
+      "roles": [
         "Mage"
       ],
       "partype": "Mana",
@@ -3624,7 +3624,7 @@
         "magic": 8,
         "difficulty": 8
       },
-      "type": [
+      "roles": [
         "Assassin",
         "Mage"
       ],
@@ -3763,7 +3763,7 @@
         "magic": 9,
         "difficulty": 8
       },
-      "type": [
+      "roles": [
         "Assassin",
         "Mage"
       ],
@@ -3925,7 +3925,7 @@
         "magic": 7,
         "difficulty": 7
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Support"
       ],
@@ -4076,7 +4076,7 @@
         "magic": 5,
         "difficulty": 6
       },
-      "type": [
+      "roles": [
         "Marksman",
         "Mage"
       ],
@@ -4232,7 +4232,7 @@
         "magic": 1,
         "difficulty": 8
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Assassin"
       ],
@@ -4354,7 +4354,7 @@
         "magic": 7,
         "difficulty": 4
       },
-      "type": [
+      "roles": [
         "Mage",
         "Marksman"
       ],
@@ -4496,7 +4496,7 @@
         "magic": 2,
         "difficulty": 4
       },
-      "type": [
+      "roles": [
         "Marksman"
       ],
       "partype": "Mana",
@@ -4618,7 +4618,7 @@
         "magic": 2,
         "difficulty": 7
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Tank"
       ],
@@ -4741,7 +4741,7 @@
         "magic": 3,
         "difficulty": 6
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Assassin"
       ],
@@ -4900,7 +4900,7 @@
         "magic": 3,
         "difficulty": 4
       },
-      "type": [
+      "roles": [
         "Tank",
         "Support"
       ],
@@ -5050,7 +5050,7 @@
         "magic": 8,
         "difficulty": 6
       },
-      "type": [
+      "roles": [
         "Mage"
       ],
       "partype": "Mana",
@@ -5180,7 +5180,7 @@
         "magic": 3,
         "difficulty": 6
       },
-      "type": [
+      "roles": [
         "Marksman"
       ],
       "partype": "Mana",
@@ -5319,7 +5319,7 @@
         "magic": 7,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Support",
         "Mage"
       ],
@@ -5464,7 +5464,7 @@
         "magic": 9,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Mage",
         "Support"
       ],
@@ -5630,7 +5630,7 @@
         "magic": 7,
         "difficulty": 2
       },
-      "type": [
+      "roles": [
         "Tank",
         "Fighter"
       ],
@@ -5783,7 +5783,7 @@
         "magic": 9,
         "difficulty": 6
       },
-      "type": [
+      "roles": [
         "Mage",
         "Assassin"
       ],
@@ -5930,7 +5930,7 @@
         "magic": 6,
         "difficulty": 3
       },
-      "type": [
+      "roles": [
         "Tank",
         "Mage"
       ],
@@ -6077,7 +6077,7 @@
         "magic": 7,
         "difficulty": 4
       },
-      "type": [
+      "roles": [
         "Fighter"
       ],
       "partype": "Shield",
@@ -6215,7 +6215,7 @@
         "magic": 8,
         "difficulty": 1
       },
-      "type": [
+      "roles": [
         "Mage",
         "Support"
       ],
@@ -6366,7 +6366,7 @@
         "magic": 7,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Support",
         "Mage"
       ],
@@ -6509,7 +6509,7 @@
         "magic": 10,
         "difficulty": 10
       },
-      "type": [
+      "roles": [
         "Mage",
         "Support"
       ],
@@ -6656,7 +6656,7 @@
         "magic": 10,
         "difficulty": 6
       },
-      "type": [
+      "roles": [
         "Mage"
       ],
       "partype": "Mana",
@@ -6818,7 +6818,7 @@
         "magic": 2,
         "difficulty": 4
       },
-      "type": [
+      "roles": [
         "Marksman",
         "Support"
       ],
@@ -6976,7 +6976,7 @@
         "magic": 6,
         "difficulty": 6
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Tank"
       ],
@@ -7123,7 +7123,7 @@
         "magic": 6,
         "difficulty": 6
       },
-      "type": [
+      "roles": [
         "Tank",
         "Fighter"
       ],
@@ -7256,7 +7256,7 @@
         "magic": 9,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Mage",
         "Support"
       ],
@@ -7381,7 +7381,7 @@
         "magic": 8,
         "difficulty": 7
       },
-      "type": [
+      "roles": [
         "Mage"
       ],
       "partype": "Mana",
@@ -7504,7 +7504,7 @@
         "magic": 7,
         "difficulty": 8
       },
-      "type": [
+      "roles": [
         "Assassin",
         "Mage"
       ],
@@ -7660,7 +7660,7 @@
         "magic": 2,
         "difficulty": 4
       },
-      "type": [
+      "roles": [
         "Assassin",
         "Fighter"
       ],
@@ -7802,7 +7802,7 @@
         "magic": 3,
         "difficulty": 3
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Tank"
       ],
@@ -7948,7 +7948,7 @@
         "magic": 9,
         "difficulty": 7
       },
-      "type": [
+      "roles": [
         "Mage",
         "Support"
       ],
@@ -8094,7 +8094,7 @@
         "magic": 8,
         "difficulty": 9
       },
-      "type": [
+      "roles": [
         "Mage",
         "Marksman"
       ],
@@ -8226,7 +8226,7 @@
         "magic": 3,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Tank",
         "Fighter"
       ],
@@ -8344,7 +8344,7 @@
         "magic": 3,
         "difficulty": 4
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Assassin"
       ],
@@ -8491,7 +8491,7 @@
         "magic": 5,
         "difficulty": 9
       },
-      "type": [
+      "roles": [
         "Support",
         "Mage"
       ],
@@ -8618,7 +8618,7 @@
         "magic": 2,
         "difficulty": 6
       },
-      "type": [
+      "roles": [
         "Tank",
         "Fighter"
       ],
@@ -8768,7 +8768,7 @@
         "magic": 1,
         "difficulty": 7
       },
-      "type": [
+      "roles": [
         "Support",
         "Assassin"
       ],
@@ -8896,7 +8896,7 @@
         "magic": 4,
         "difficulty": 8
       },
-      "type": [
+      "roles": [
         "Assassin",
         "Fighter"
       ],
@@ -9015,7 +9015,7 @@
         "magic": 2,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Marksman",
         "Assassin"
       ],
@@ -9148,7 +9148,7 @@
         "magic": 8,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Support"
       ],
       "partype": "Mana",
@@ -9282,7 +9282,7 @@
         "magic": 5,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Tank",
         "Fighter"
       ],
@@ -9432,7 +9432,7 @@
         "magic": 2,
         "difficulty": 3
       },
-      "type": [
+      "roles": [
         "Fighter"
       ],
       "partype": "Rage",
@@ -9558,7 +9558,7 @@
         "magic": 9,
         "difficulty": 4
       },
-      "type": [
+      "roles": [
         "Mage"
       ],
       "partype": "Mana",
@@ -9700,7 +9700,7 @@
         "magic": 5,
         "difficulty": 4
       },
-      "type": [
+      "roles": [
         "Tank",
         "Fighter"
       ],
@@ -9857,7 +9857,7 @@
         "magic": 4,
         "difficulty": 3
       },
-      "type": [
+      "roles": [
         "Support",
         "Tank"
       ],
@@ -9996,7 +9996,7 @@
         "magic": 2,
         "difficulty": 6
       },
-      "type": [
+      "roles": [
         "Marksman"
       ],
       "partype": "Mana",
@@ -10153,7 +10153,7 @@
         "magic": 3,
         "difficulty": 4
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Tank"
       ],
@@ -10278,7 +10278,7 @@
         "magic": 9,
         "difficulty": 10
       },
-      "type": [
+      "roles": [
         "Mage"
       ],
       "partype": "Mana",
@@ -10410,7 +10410,7 @@
         "magic": 2,
         "difficulty": 3
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Tank"
       ],
@@ -10568,7 +10568,7 @@
         "magic": 2,
         "difficulty": 8
       },
-      "type": [
+      "roles": [
         "Assassin",
         "Fighter"
       ],
@@ -10707,7 +10707,7 @@
         "magic": 1,
         "difficulty": 8
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Assassin"
       ],
@@ -10865,7 +10865,7 @@
         "magic": 6,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Tank"
       ],
@@ -11019,7 +11019,7 @@
         "magic": 6,
         "difficulty": 6
       },
-      "type": [
+      "roles": [
         "Marksman"
       ],
       "partype": "Mana",
@@ -11168,7 +11168,7 @@
         "magic": 1,
         "difficulty": 2
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Tank"
       ],
@@ -11314,7 +11314,7 @@
         "magic": 8,
         "difficulty": 4
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Mage"
       ],
@@ -11453,7 +11453,7 @@
         "magic": 1,
         "difficulty": 8
       },
-      "type": [
+      "roles": [
         "Marksman"
       ],
       "partype": "Mana",
@@ -11597,7 +11597,7 @@
         "magic": 7,
         "difficulty": 8
       },
-      "type": [
+      "roles": [
         "Assassin",
         "Fighter"
       ],
@@ -11736,7 +11736,7 @@
         "magic": 7,
         "difficulty": 9
       },
-      "type": [
+      "roles": [
         "Mage",
         "Fighter"
       ],
@@ -11872,7 +11872,7 @@
         "magic": 7,
         "difficulty": 10
       },
-      "type": [
+      "roles": [
         "Assassin",
         "Mage"
       ],
@@ -12019,7 +12019,7 @@
         "magic": 6,
         "difficulty": 7
       },
-      "type": [
+      "roles": [
         "Marksman",
         "Mage"
       ],
@@ -12186,7 +12186,7 @@
         "magic": 8,
         "difficulty": 10
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Mage"
       ],
@@ -12317,7 +12317,7 @@
         "magic": 9,
         "difficulty": 9
       },
-      "type": [
+      "roles": [
         "Mage",
         "Support"
       ],
@@ -12460,7 +12460,7 @@
         "magic": 2,
         "difficulty": 3
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Assassin"
       ],
@@ -12605,7 +12605,7 @@
         "magic": 7,
         "difficulty": 6
       },
-      "type": [
+      "roles": [
         "Assassin",
         "Fighter"
       ],
@@ -12755,7 +12755,7 @@
         "magic": 3,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Tank",
         "Fighter"
       ],
@@ -12905,7 +12905,7 @@
         "magic": 10,
         "difficulty": 7
       },
-      "type": [
+      "roles": [
         "Mage",
         "Fighter"
       ],
@@ -13068,7 +13068,7 @@
         "magic": 6,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Tank",
         "Mage"
       ],
@@ -13211,7 +13211,7 @@
         "magic": 7,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Tank",
         "Mage"
       ],
@@ -13354,7 +13354,7 @@
         "magic": 6,
         "difficulty": 4
       },
-      "type": [
+      "roles": [
         "Tank",
         "Fighter"
       ],
@@ -13505,7 +13505,7 @@
         "magic": 6,
         "difficulty": 7
       },
-      "type": [
+      "roles": [
         "Marksman",
         "Support"
       ],
@@ -13620,7 +13620,7 @@
         "magic": 1,
         "difficulty": 2
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Tank"
       ],
@@ -13731,7 +13731,7 @@
         "magic": 10,
         "difficulty": 9
       },
-      "type": [
+      "roles": [
         "Assassin",
         "Mage"
       ],
@@ -13875,7 +13875,7 @@
         "magic": 3,
         "difficulty": 6
       },
-      "type": [
+      "roles": [
         "Marksman"
       ],
       "partype": "Mana",
@@ -14009,7 +14009,7 @@
         "magic": 9,
         "difficulty": 8
       },
-      "type": [
+      "roles": [
         "Mage",
         "Support"
       ],
@@ -14148,7 +14148,7 @@
         "magic": 8,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Mage",
         "Support"
       ],
@@ -14270,7 +14270,7 @@
         "magic": 1,
         "difficulty": 7
       },
-      "type": [
+      "roles": [
         "Assassin"
       ],
       "partype": "Mana",
@@ -14412,7 +14412,7 @@
         "magic": 5,
         "difficulty": 3
       },
-      "type": [
+      "roles": [
         "Support",
         "Fighter"
       ],
@@ -14546,7 +14546,7 @@
         "magic": 7,
         "difficulty": 6
       },
-      "type": [
+      "roles": [
         "Marksman",
         "Assassin"
       ],
@@ -14699,7 +14699,7 @@
         "magic": 6,
         "difficulty": 7
       },
-      "type": [
+      "roles": [
         "Support",
         "Fighter"
       ],
@@ -14846,7 +14846,7 @@
         "magic": 5,
         "difficulty": 4
       },
-      "type": [
+      "roles": [
         "Marksman",
         "Assassin"
       ],
@@ -15004,7 +15004,7 @@
         "magic": 2,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Tank"
       ],
@@ -15142,7 +15142,7 @@
         "magic": 2,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Assassin"
       ],
@@ -15297,7 +15297,7 @@
         "magic": 3,
         "difficulty": 6
       },
-      "type": [
+      "roles": [
         "Marksman",
         "Assassin"
       ],
@@ -15452,7 +15452,7 @@
         "magic": 4,
         "difficulty": 7
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Tank"
       ],
@@ -15592,7 +15592,7 @@
         "magic": 3,
         "difficulty": 8
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Tank"
       ],
@@ -15727,7 +15727,7 @@
         "magic": 4,
         "difficulty": 2
       },
-      "type": [
+      "roles": [
         "Marksman",
         "Mage"
       ],
@@ -15874,7 +15874,7 @@
         "magic": 1,
         "difficulty": 8
       },
-      "type": [
+      "roles": [
         "Marksman",
         "Assassin"
       ],
@@ -16028,7 +16028,7 @@
         "magic": 10,
         "difficulty": 7
       },
-      "type": [
+      "roles": [
         "Mage"
       ],
       "partype": "Mana",
@@ -16186,7 +16186,7 @@
         "magic": 3,
         "difficulty": 4
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Assassin"
       ],
@@ -16329,7 +16329,7 @@
         "magic": 10,
         "difficulty": 9
       },
-      "type": [
+      "roles": [
         "Mage"
       ],
       "partype": "Mana",
@@ -16457,7 +16457,7 @@
         "magic": 8,
         "difficulty": 7
       },
-      "type": [
+      "roles": [
         "Mage"
       ],
       "partype": "Crimson Rush",
@@ -16607,7 +16607,7 @@
         "magic": 4,
         "difficulty": 3
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Tank"
       ],
@@ -16742,7 +16742,7 @@
         "magic": 3,
         "difficulty": 3
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Tank"
       ],
@@ -16901,7 +16901,7 @@
         "magic": 1,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Marksman"
       ],
       "partype": "Mana",
@@ -17030,7 +17030,7 @@
         "magic": 10,
         "difficulty": 8
       },
-      "type": [
+      "roles": [
         "Mage"
       ],
       "partype": "Mana",
@@ -17164,7 +17164,7 @@
         "magic": 4,
         "difficulty": 10
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Assassin"
       ],
@@ -17308,7 +17308,7 @@
         "magic": 4,
         "difficulty": 6
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Tank"
       ],
@@ -17439,7 +17439,7 @@
         "magic": 8,
         "difficulty": 2
       },
-      "type": [
+      "roles": [
         "Support",
         "Mage"
       ],
@@ -17555,7 +17555,7 @@
         "magic": 6,
         "difficulty": 9
       },
-      "type": [
+      "roles": [
         "Assassin"
       ],
       "partype": "Mana",
@@ -17700,7 +17700,7 @@
         "magic": 7,
         "difficulty": 8
       },
-      "type": [
+      "roles": [
         "Tank",
         "Fighter"
       ],
@@ -17827,7 +17827,7 @@
         "magic": 1,
         "difficulty": 7
       },
-      "type": [
+      "roles": [
         "Assassin"
       ],
       "partype": "Energy",
@@ -17965,7 +17965,7 @@
         "magic": 9,
         "difficulty": 4
       },
-      "type": [
+      "roles": [
         "Mage"
       ],
       "partype": "Mana",
@@ -18111,7 +18111,7 @@
         "magic": 8,
         "difficulty": 6
       },
-      "type": [
+      "roles": [
         "Support",
         "Mage"
       ],
@@ -18249,7 +18249,7 @@
         "magic": 8,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Mage",
         "Support"
       ],
@@ -18376,7 +18376,7 @@
         "magic": 8,
         "difficulty": 7
       },
-      "type": [
+      "roles": [
         "Mage",
         "Support"
       ],
@@ -18509,7 +18509,7 @@
         "magic": 3,
         "difficulty": 4
       },
-      "type": [
+      "roles": [
         "Tank"
       ],
       "partype": "Energy",
@@ -18653,7 +18653,7 @@
         "magic": 3,
         "difficulty": 4
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Tank"
       ],
@@ -18793,7 +18793,7 @@
         "magic": 7,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Tank",
         "Fighter"
       ],
@@ -18944,7 +18944,7 @@
         "magic": 3,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Tank",
         "Fighter"
       ],
@@ -19082,7 +19082,7 @@
         "magic": 1,
         "difficulty": 4
       },
-      "type": [
+      "roles": [
         "Marksman"
       ],
       "partype": "Mana",
@@ -19240,7 +19240,7 @@
         "magic": 5,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Tank"
       ],
@@ -19371,7 +19371,7 @@
         "magic": 8,
         "difficulty": 4
       },
-      "type": [
+      "roles": [
         "Support",
         "Mage"
       ],
@@ -19517,7 +19517,7 @@
         "magic": 7,
         "difficulty": 3
       },
-      "type": [
+      "roles": [
         "Support",
         "Mage"
       ],
@@ -19676,7 +19676,7 @@
         "magic": 9,
         "difficulty": 8
       },
-      "type": [
+      "roles": [
         "Mage",
         "Fighter"
       ],
@@ -19812,7 +19812,7 @@
         "magic": 8,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Mage",
         "Assassin"
       ],
@@ -19934,7 +19934,7 @@
         "magic": 5,
         "difficulty": 1
       },
-      "type": [
+      "roles": [
         "Marksman"
       ],
       "partype": "Mana",
@@ -20103,7 +20103,7 @@
         "magic": 2,
         "difficulty": 3
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Tank"
       ],
@@ -20240,7 +20240,7 @@
         "magic": 2,
         "difficulty": 4
       },
-      "type": [
+      "roles": [
         "Assassin",
         "Fighter"
       ],
@@ -20395,7 +20395,7 @@
         "magic": 7,
         "difficulty": 4
       },
-      "type": [
+      "roles": [
         "Tank",
         "Fighter"
       ],
@@ -20542,7 +20542,7 @@
         "magic": 6,
         "difficulty": 9
       },
-      "type": [
+      "roles": [
         "Mage"
       ],
       "partype": "Mana",
@@ -20699,7 +20699,7 @@
         "magic": 10,
         "difficulty": 8
       },
-      "type": [
+      "roles": [
         "Mage"
       ],
       "partype": "Mana",
@@ -20825,7 +20825,7 @@
         "magic": 3,
         "difficulty": 2
       },
-      "type": [
+      "roles": [
         "Fighter",
         "Assassin"
       ],
@@ -20970,7 +20970,7 @@
         "magic": 6,
         "difficulty": 5
       },
-      "type": [
+      "roles": [
         "Support",
         "Tank"
       ],
