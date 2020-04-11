@@ -26,7 +26,6 @@ export default class MainContainer extends React.Component {
         champions: champions,
         displayChampions: champions
       },
-      // ()=>{console.log(this.state.champions)}
       )
     })
   }
