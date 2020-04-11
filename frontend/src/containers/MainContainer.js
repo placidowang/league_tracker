@@ -1,6 +1,10 @@
 import React from 'react'
 import SummonerContainer from './SummonerContainer.js'
 import ChampionsContainer from './ChampionsContainer.js'
+import Login from '../components/Login'
+import SignUp from '../components/SignUp'
+import NavBar from '../components/NavBar'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 
 
 export default class MainContainer extends React.Component {
@@ -15,14 +19,13 @@ export default class MainContainer extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/champions')
+    fetch('http://localhost:4000/champions')
     .then(r => r.json())
     .then(champions => {
       this.setState({
         champions: champions,
         displayChampions: champions
       },
-      // ()=>{console.log(this.state.champions)}
       )
     })
   }
@@ -37,13 +40,19 @@ export default class MainContainer extends React.Component {
 
   render() {
     return(
-      <div>
-        MainContainer
-        <SummonerContainer />
-        <ChampionsContainer
-          champions={this.state.displayChampions} />
-
-      </div>
+      <Router>
+        <div>
+          <NavBar />
+          <Route exact path = "/login" component = {Login} /> 
+          <Route exact path = "/signup" component = {SignUp} /> 
+          <Route exact path = "/summoner" render = {(routerProps) => <SummonerContainer {...routerProps} />} />
+          <Route exact path = "/champions" render = {(routerProps) => 
+            <ChampionsContainer 
+              {...routerProps}
+              champions={this.state.displayChampions}
+            />}/> 
+        </div>
+      </Router>
     )
   }
 }
