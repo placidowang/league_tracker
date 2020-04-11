@@ -9,6 +9,7 @@ export default class SignUp extends Component {
         this.state = {
             username_errors: "",
             password_errors: "",
+            password_confirmation_errors: "",
             username_has_errors: false,
             password_has_errors: false,
         }
@@ -28,7 +29,8 @@ export default class SignUp extends Component {
             },
             body: JSON.stringify({
                 username: this.state.username,
-                password: this.state.password
+                password: this.state.password,
+                password_confirmation: this.state.password_confirmation
             })
         }
         fetch("http://localhost:3000/user_signup",obj)
@@ -36,6 +38,7 @@ export default class SignUp extends Component {
         .then(data => {
             let username_errors = []
             let password_errors = []
+            let password_confirmation_errors = []
             let username_has_errors = false
             let password_has_errors = false
             let errors = "false"
@@ -48,9 +51,13 @@ export default class SignUp extends Component {
                     password_errors = data.errors.password
                     password_has_errors = true
                 }
+                if(data.errors.password_confirmation){
+                    password_confirmation_errors = data.errors.password_confirmation
+                    password_has_errors = true
+                }
                 errors = "true"
             }
-            this.setState({username_errors,username_has_errors,password_errors,password_has_errors,errors})
+            this.setState({username_errors,username_has_errors,password_errors,password_has_errors,errors,password_confirmation_errors})
         })
     }
 
@@ -63,6 +70,7 @@ export default class SignUp extends Component {
                         <div className="alert alert-danger" role="alert">
                             {this.state.username_has_errors ? this.state.username_errors.map(error => <li>{`Username ${error}`}</li>) : ""}
                             {this.state.password_has_errors ? this.state.password_errors.map(error => <li>{`Password ${error}`}</li>) : ""}
+                            {this.state.password_has_errors ? this.state.password_confirmation_errors.map(error => <li>{`Password ${error}`}</li>) : ""}
                         </div>
                     : this.state.errors === "false" ? 
                         <div className="alert alert-success" role="alert">
@@ -89,8 +97,8 @@ export default class SignUp extends Component {
                 <div class="form-group login_content">
                     <h3 >Password Confirmation</h3>
                     <input type="password" className={
-                        this.state.password_errors[0] ? "form-control is-invalid"
-                        : Array.isArray(this.state.password_errors) ? "form-control is-valid"
+                        this.state.password_has_errors ? "form-control is-invalid"
+                        : Array.isArray(this.state.password_confirmation_errors) ? "form-control is-valid"
                         : "form-control"} name="password_confirmation" onChange = {(e) => this.handleChange(e)}/>
                 </div>
                 <br/>

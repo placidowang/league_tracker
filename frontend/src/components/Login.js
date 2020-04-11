@@ -8,7 +8,6 @@ export default class Login extends Component {
         super()
         this.state = {
             status: "",
-            
         }
     }
 
@@ -33,9 +32,9 @@ export default class Login extends Component {
         .then(res => res.json())
         .then(data => {
             if(data.errors){
-                this.setState({status: data.errors})
+                this.setState({status: data.errors, errors: "true"})
             }else{
-                this.setState({status: "Login Success"})
+                this.setState({status: "Login Success", errors: "false"})
                 localStorage.token = data.token
             }
         })
@@ -44,7 +43,18 @@ export default class Login extends Component {
     render() {
         return (
             <div className="login_container shadow-lg p-3 mb-5 bg-white rounded">
-                {this.state.status}
+                <h1>Login</h1>
+                {
+                    this.state.errors === "true" ? 
+                        <div className="alert alert-danger" role="alert">
+                            {this.state.status}
+                        </div>
+                    : this.state.errors === "false" ? 
+                        <div className="alert alert-success" role="alert">
+                            {this.state.status}
+                        </div>
+                    : ""
+                }
                 <div class="form-group login_content">
                     <h3 >Username</h3>
                     <input type="text" className={

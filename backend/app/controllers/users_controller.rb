@@ -4,8 +4,7 @@ class UsersController < ApplicationController
 
     def signup
         @user = User.new(user_params)
-        if @user.valid? 
-            @user.save
+        if @user.save 
            render json: {user: UserSerializer.new(@user)} , status: :created
         else
            errors_message = @user.errors.messages
