@@ -8,7 +8,6 @@ import MainContainer from './containers/MainContainer.js'
 function App() {
   return (
     <div className="App">
-      {/* <NavBar /> */}
       <main style={{marginTop: '64px'}}>
       <MainContainer />
       </main>

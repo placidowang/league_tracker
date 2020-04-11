@@ -34,7 +34,8 @@ export default class Login extends Component {
             if(data.errors){
                 this.setState({status: data.errors, errors: "true"})
             }else{
-                this.setState({status: "Login Success", errors: "false"})
+                this.props.history.push("/")
+                this.props.displayMessage("Login Success")
                 localStorage.token = data.token
             }
         })
@@ -47,10 +48,6 @@ export default class Login extends Component {
                 {
                     this.state.errors === "true" ? 
                         <div className="alert alert-danger" role="alert">
-                            {this.state.status}
-                        </div>
-                    : this.state.errors === "false" ? 
-                        <div className="alert alert-success" role="alert">
                             {this.state.status}
                         </div>
                     : ""

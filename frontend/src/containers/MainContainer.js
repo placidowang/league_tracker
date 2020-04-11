@@ -14,7 +14,11 @@ export default class MainContainer extends React.Component {
     this.state={
       summonerProfile: {}, // setState when searching API for a specific summoner profile
       champions: [],
-      displayChampions: []
+      displayChampions: [],
+      display_message: false,
+      message_class: "",
+      message_text: "",
+      login_status: false
     }
   }
 
@@ -30,6 +34,24 @@ export default class MainContainer extends React.Component {
     })
   }
 
+  displayMessage = (message) => {
+    let login_status = message === "Login Success" ? true : false
+    this.setState({
+      display_message: true, 
+      message_class: "alert alert-success fade",
+      message_text: message,
+      login_status
+    })
+
+    setTimeout(() => {
+      this.setState({
+        display_message: false,
+        message_class: "",
+        message_text: ""
+      })
+    }, 3000);;
+  }
+
   sortChampions = () => {
 
   }
@@ -40,10 +62,16 @@ export default class MainContainer extends React.Component {
 
   render() {
     return(
-      <Router>
+      <Router >
         <div>
-          <NavBar />
-          <Route exact path = "/login" component = {Login} /> 
+          <div 
+            class={`${this.state.message_class} message`} 
+            role="alert"
+            >
+            {this.state.display_message ? <h4>{this.state.message_text}</h4> : "" }
+          </div>
+          <NavBar displayMessage = {this.displayMessage} login_status = {this.state.login_status}/>
+          <Route exact path = "/login" render = {(routerProps) => <Login {...routerProps} displayMessage = {this.displayMessage}/>} /> 
           <Route exact path = "/signup" component = {SignUp} /> 
           <Route exact path = "/summoner" render = {(routerProps) => <SummonerContainer {...routerProps} />} />
           <Route exact path = "/champions" render = {(routerProps) => 

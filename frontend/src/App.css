@@ -4,6 +4,7 @@
   background-color: black;
 }
 
+/* Login and Signup styling */
 .login_container {
   color: black;
   background-color: white;
@@ -36,6 +37,37 @@
   float: left;
   margin-left: 1vw ;
 }
+
+/* Login and Signup end */
+
+/* begin display message */
+.message{
+  position: relative;
+  width: 80vw;
+  height: 5vh;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.fade {
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1; 
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation { 
+  0% { 
+    opacity: 0; 
+  } 
+  50% {
+    opacity: 1;
+  }
+  100% { 
+    opacity: 0; 
+  } 
+}
+
+/* end display message */
 
 /* .App-logo {
   height: 40vmin;

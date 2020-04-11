@@ -39,16 +39,23 @@ export default class NavBar extends React.Component {
                   <NavLink to = "/champions">Champions</NavLink>
                 </button>
               </li>  
-              <li>
-                <button onClick= {() => localStorage.clear()}>
-                  LogOut
-                </button>
-              </li>
-              <li>
-                <button onClick= {() => localStorage.clear()}>
-                  <NavLink to = "/login">Login</NavLink>
-                </button>
-              </li>
+              {
+                this.props.login_status ?  
+                  <li>
+                    <button onClick= {() => {
+                    localStorage.clear()
+                    this.props.displayMessage("LogOut Success")
+                    }}>
+                      LogOut
+                   </button>
+                  </li>
+                : 
+                  <li>
+                    <button onClick= {() => localStorage.clear()}>
+                      <NavLink to = "/login">Login</NavLink>
+                    </button>
+                  </li>
+              }
             </ul>  
           </div>  
         
