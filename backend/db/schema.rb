@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_10_031427) do
+ActiveRecord::Schema.define(version: 2020_04_10_165418) do
 
   create_table "champions", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,17 @@ ActiveRecord::Schema.define(version: 2020_04_10_031427) do
     t.string "spells"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "key"
+    t.string "blurb"
+    t.string "info"
+    t.string "roles"
+    t.string "partype"
+    t.string "icon_image"
+    t.string "skins"
+    t.string "lore"
+    t.string "allytips"
+    t.string "enemytips"
+    t.string "passive"
   end
 
   create_table "summoner_profile_champion_joiners", force: :cascade do |t|

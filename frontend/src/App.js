@@ -1,14 +1,18 @@
-import React from 'react';
+import React from 'react'
+import './App.css'
 import MainContainer from './containers/MainContainer.js'
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+// import Login from './components/Login'
+// import SignUp from './components/SignUp'
+// import NavBar from './components/NavBar'
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Route exact path = "/" component = {MainContainer} />
-      </div>
-    </Router>
+    <div className="App">
+      {/* <NavBar /> */}
+      <main style={{marginTop: '64px'}}>
+      <MainContainer />
+      </main>
+    </div>
   );
 }
 

@@ -1,5 +1,5 @@
 import React , {Component} from 'react'
-
+// import { Segment , Button , Input} from 'semantic-ui-react'
 import {NavLink} from 'react-router-dom'
 
 export default class Login extends Component {
@@ -7,7 +7,8 @@ export default class Login extends Component {
     constructor(){
         super()
         this.state = {
-            status: ""
+            status: "",
+            
         }
     }
 
@@ -34,7 +35,7 @@ export default class Login extends Component {
             if(data.errors){
                 this.setState({status: data.errors})
             }else{
-                this.setState({status: "Login"})
+                this.setState({status: "Login Success"})
                 localStorage.token = data.token
             }
         })
@@ -42,18 +43,27 @@ export default class Login extends Component {
 
     render() {
         return (
-            <div>
+            <div className="login_container shadow-lg p-3 mb-5 bg-white rounded">
                 {this.state.status}
+                <div class="form-group login_content">
+                    <h3 >Username</h3>
+                    <input type="text" className={
+                        this.state.status === "Invalid Username or Password" ? "form-control is-invalid"
+                        : this.state.status === "Login Success" ? "form-control is-valid"
+                        : "form-control"} name="username" onChange = {(e) => this.handleChange(e)}/>
+                </div>
                 <br/>
-                <label>Username</label><br/>
-                <input type="text" name="username" onChange = {(e) => this.handleChange(e)}/>
+                <div class="form-group login_content">
+                    <h3 >Password</h3>
+                    <input type="password" className={
+                        this.state.status === "Invalid Username or Password" ? "form-control is-invalid"
+                        : this.state.status === "Login Success" ? "form-control is-valid"
+                        : "form-control"} name="password" onChange = {(e) => this.handleChange(e)}/>
+                </div>
                 <br/>
-                <label>Password</label><br/>
-                <input type="text" name="password" onChange = {(e) => this.handleChange(e)}/>
+                <button className="btn btn-outline-success" onClick={() => this.handleLogin()}>Login</button>
                 <br/>
-                <button onClick={() => this.handleLogin()}>Login</button>
-                <br/>
-                <button>
+                <button className="btn btn-outline-success">
                     <NavLink to = "/signup">Sign Up</NavLink>
                 </button>
             </div>
