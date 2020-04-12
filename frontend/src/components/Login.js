@@ -1,5 +1,4 @@
 import React , {Component} from 'react'
-// import { Segment , Button , Input} from 'semantic-ui-react'
 import {NavLink} from 'react-router-dom'
 
 export default class Login extends Component {
