@@ -23,7 +23,7 @@ export default class MainContainer extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:4000/champions')
+    fetch('http://localhost:3000/champions')
     .then(r => r.json())
     .then(champions => {
       this.setState({
