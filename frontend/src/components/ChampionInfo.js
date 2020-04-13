@@ -10,7 +10,7 @@ export default class ChampionInfo extends Component {
 
     componentDidUpdate(prevProps){
         if(prevProps.championId !== this.props.championId){
-            fetch(` http://localhost:3000/champions/${1}`)
+            fetch(` http://localhost:3000/champions/${74}`)
             .then(res => res.json())
             .then(champion => this.setState({champion}))
         }
@@ -72,6 +72,22 @@ export default class ChampionInfo extends Component {
                         </div>
                     </div>
                     <div className="champion_body">
+                        <div className="champion_info_container">
+                            <h1 className="champion_info_title">Stats</h1>
+                            {Object.keys(champion.stats).map(key => <label><strong>{key.charAt(0).toUpperCase() + key.replace(/^\w/, "")}</strong>: {champion.stats[key]}</label>)}
+                        </div>
+                        <div className="champion_info_container">
+                            <h1 className="champion_info_title">Lore</h1>
+                            <p>{champion.lore}</p>
+                        </div>
+                        <div className="champion_info_container">
+                            <h1 className="champion_info_title">Allytips</h1>
+                            {champion.allytips.map(allytip => <p>-{allytip}</p>)}
+                        </div>
+                        <div className="champion_info_container">
+                            <h1 className="champion_info_title">Enemytips</h1>
+                            {champion.enemytips.map(enemytip => <p>-{enemytip}</p>)}
+                        </div>
                         <div className="row">
                             <div className="col">
                                 <h1 className="champion_ability_title">ABILITIES</h1>
@@ -93,6 +109,12 @@ export default class ChampionInfo extends Component {
                             </div>
                         </div> 
                     </div>
+                    {champion.skins.map(skin => 
+                        <div>
+                            <img src={skin.image}/>
+                            <iframe src={`https://www.youtube.com/embed/${skin.videoId}`} frameborder="0"></iframe>
+                        </div>
+                    )}
                 </div>
             )
         }

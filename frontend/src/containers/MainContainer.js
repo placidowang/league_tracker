@@ -19,7 +19,7 @@ export default class MainContainer extends React.Component {
       display_message: false,
       message_class: "",
       message_text: "",
-      login_status: false
+      login_status: false,
     }
   }
 

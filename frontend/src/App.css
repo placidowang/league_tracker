@@ -155,12 +155,27 @@
   font-size: 20px;
 }
 
+.champion_info_container{
+  margin-bottom: 5vh;
+}
+
+.champion_info_container p{
+  margin-left: 5vw;
+}
+
+.champion_info_container label{
+  margin: 0 3vw 2vh 3vw;
+  padding: 3px;
+  border-bottom: 1px solid white;
+}
+
+
 .row{
   width: 90vw;
   margin: 0 auto;
 }
 
-.champion_ability_title, .champion_spotlight_title {
+.champion_ability_title, .champion_spotlight_title , .champion_info_title{
   font-size: 4vh;
   position: relative;
   left: 2vw;
@@ -169,6 +184,8 @@
 
 .champion_ability_title::before,
 .champion_spotlight_title::before,
+.champion_info_title::before,
+.champion_info_title::after,
 .champion_spotlight_title::after,
 .champion_ability_title::after {
     display: inline-block;
@@ -184,7 +201,7 @@
 }
 
 .champion_ability_title::before {
-  width: 2vw
+  width: 2vw;
 }
 
 .champion_spotlight_title::before{
@@ -192,11 +209,19 @@
 }
 
 .champion_spotlight_title::after{
-  width: 2vw
+  width: 2vw;
+}
+
+.champion_info_title::before{
+  width: 3vw;
+}
+
+.champion_info_title::after{
+  width: 30vw;
 }
 
 .ability{
-  margin: 2vh 0;
+  margin: 3vh 0;
   border-bottom: 0.5px solid white ;
 }
 
