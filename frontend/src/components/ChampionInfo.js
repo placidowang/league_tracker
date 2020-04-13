@@ -124,7 +124,8 @@ export default class ChampionInfo extends Component {
         let champion = this.state.champion
         return(
             <div>
-                {this.displayChampion(champion)}
+                {/* {this.displayChampion(champion)} */}
+                {champion.name}
             </div>
         )
     }

@@ -8,8 +8,8 @@ class ChampionsController < ApplicationController
   end
 
   def show
-    # champion = Champion.find(params[:id])
-    # render json: champion
+    champion = Champion.find(params[:id])
+    render json: champion
   end
 
   private
