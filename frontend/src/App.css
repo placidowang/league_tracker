@@ -72,6 +72,172 @@
 /* end display message */
 
 
+/* start champion info page */
+
+/* header */
+.champion_header{
+  margin: 0 auto;
+  text-align: center;
+}
+
+.champion_header img {
+  width: 80%;
+  height: 80%;
+}
+
+.champion_info{
+  position: relative;
+  top: -20vh;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.champion_info h3{
+  position: relative;
+  font-size: 3vh;
+  word-spacing: 7px;
+  font-family: Times, Times New Roman, serif;
+  margin-bottom: 7vh;
+}
+
+.champion_info .champion_name {
+  font-size: 5vw;
+  position: relative;
+  font-family: Blippo, fantasy;
+}
+
+.champion_info .champion_name::before,
+.champion_info .champion_name::after {
+    display: inline-block;
+    content: "";
+    border-top: .2rem solid white;
+    margin: 0 2rem;
+    transform: translateY(-1rem);
+    width: 22vw
+}
+
+.champion_info .row{
+  width: 70vw;
+}
+
+.champion_info .row .col{
+  position: relative;
+  top: 2vh
+}
+
+.item_col{
+  display: inline-block;
+  margin: 0 2vw;
+}
+
+.item_col label.info{
+  font-size: 2em;
+  font-family: Times, Times New Roman, serif;
+  float: left;
+  margin-bottom: 12px;
+}
+
+.item_col label.info span{
+  font-size: 1.5em;
+}
+
+.champion_blurd{
+  width: 60%;
+  margin: 0 auto;
+  padding: 20px;
+  font-size: 18px;
+  border-left: 0.2px solid white;
+}
+
+/* end header */
+
+/* body */
+.champion_body{
+  width: 95vw;
+  margin: 0 auto;
+  font-family: Times, Times New Roman, serif;
+  font-size: 20px;
+}
+
+.champion_info_container{
+  margin-bottom: 5vh;
+}
+
+.champion_info_container p{
+  margin-left: 5vw;
+}
+
+.champion_info_container label{
+  margin: 0 3vw 2vh 3vw;
+  padding: 3px;
+  border-bottom: 1px solid white;
+}
+
+
+.row{
+  width: 90vw;
+  margin: 0 auto;
+}
+
+.champion_ability_title, .champion_spotlight_title , .champion_info_title{
+  font-size: 4vh;
+  position: relative;
+  left: 2vw;
+  font-family: Times, Times New Roman, serif;
+}
+
+.champion_ability_title::before,
+.champion_spotlight_title::before,
+.champion_info_title::before,
+.champion_info_title::after,
+.champion_spotlight_title::after,
+.champion_ability_title::after {
+    display: inline-block;
+    content: "";
+    border-top: .1rem solid white;
+    width: 4rem;
+    margin: 0 1rem;
+    transform: translateY(-1rem);
+}
+
+.champion_ability_title::after{
+  width: 16vw;
+}
+
+.champion_ability_title::before {
+  width: 2vw;
+}
+
+.champion_spotlight_title::before{
+  width: 16vw;
+}
+
+.champion_spotlight_title::after{
+  width: 2vw;
+}
+
+.champion_info_title::before{
+  width: 3vw;
+}
+
+.champion_info_title::after{
+  width: 30vw;
+}
+
+.ability{
+  margin: 3vh 0;
+  border-bottom: 0.5px solid white ;
+}
+
+.ability:last-child{
+  border: none;
+}
+
+.champion_spotlight{
+  position: relative;
+  margin-top: 20vh
+}
+
+
 
 
 .champion-card {
@@ -131,6 +297,7 @@
 
 
 /* default react garbage below */
+
 
 /* .App-logo {
   height: 40vmin;

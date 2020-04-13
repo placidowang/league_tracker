@@ -4,6 +4,7 @@ import ChampionsContainer from './ChampionsContainer.js'
 import Login from '../components/Login'
 import SignUp from '../components/SignUp'
 import NavBar from '../components/NavBar'
+import ChampionInfo from '../components/ChampionInfo'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 
 
@@ -18,7 +19,7 @@ export default class MainContainer extends React.Component {
       display_message: false,
       message_class: "",
       message_text: "",
-      login_status: false
+      login_status: false,
     }
   }
 
@@ -65,7 +66,7 @@ export default class MainContainer extends React.Component {
       <Router >
         <div>
           <div 
-            class={`${this.state.message_class} message`} 
+            className={`${this.state.message_class} message`} 
             role="alert"
             >
             {this.state.display_message ? <h4>{this.state.message_text}</h4> : "" }
@@ -73,6 +74,7 @@ export default class MainContainer extends React.Component {
           <NavBar displayMessage = {this.displayMessage} login_status = {this.state.login_status}/>
           <Route exact path = "/login" render = {(routerProps) => <Login {...routerProps} displayMessage = {this.displayMessage}/>} /> 
           <Route exact path = "/signup" component = {SignUp} /> 
+          <Route exact path = "/champion" render = {(routerProps) => <ChampionInfo {...routerProps} championId = {Math.floor(Math.random() * 148)}/>} /> 
           <Route exact path = "/summoner" render = {(routerProps) => <SummonerContainer {...routerProps} />} />
           <Route exact path = "/champions" render = {(routerProps) => 
             <ChampionsContainer 
