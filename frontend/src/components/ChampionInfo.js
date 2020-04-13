@@ -10,7 +10,7 @@ export default class ChampionInfo extends Component {
 
     componentDidUpdate(prevProps){
         if(prevProps.championId !== this.props.championId){
-            fetch(` http://localhost:3000/champions/${74}`)
+            fetch(` http://localhost:3000/champions/${131}`)
             .then(res => res.json())
             .then(champion => this.setState({champion}))
         }
