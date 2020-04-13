@@ -74,8 +74,11 @@ class ChampionCard extends React.Component {
           </Reveal.Content>
         </Reveal> */}
         
-        <Card.Content style={{}}>
-          <h3 className='champion-name'>{`${this.props.champion.name}, ${this.props.champion.title}`}</h3>
+        <Card.Content style={{
+          // textTransform: uppercase
+        }}>
+          <h1 className='champion-name'>{(this.props.champion.name).toUpperCase()}</h1>
+          <h5 className='champion-title'>{(this.props.champion.title).toUpperCase()}</h5>
         </Card.Content>
       </Card>
     )
