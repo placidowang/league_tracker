@@ -14,7 +14,7 @@ class ChampionCard extends React.Component {
 
   render() {
     // console.log(this.props.champion.roles.shift().pop().split('", "'))
-    console.log(this.props.champion.info.attack)
+    // console.log(this.props.champion.info.attack)
     return(
       <Card className='champion-card' style={{backgroundColor: 'black'}} color='teal' onMouseOver={this.transition}>
 
@@ -25,14 +25,20 @@ class ChampionCard extends React.Component {
           </Transition> */}
 
 
+          <Image size='medium' className='profile-pic' src={this.props.champion.icon_image}/>
             
           <div className='role-icons'>
-            {/* {this.props.champion.roles.map(role => <Image size='mini' src={`${role.toLowerCase()}.jpeg`} />)} */}
-            {/* why is props coming back as string and not array? need to fix and map over roles instead of the following garbage */}
-            {this.props.champion.roles.includes('Fighter') ? <div><Image size='medium' src={'./images/role-icons/fighter.jpeg'} /> <h3 style={{position:'relative', top:'-40px'}}>FIGHTER</h3></div> : null}
-            {this.props.champion.roles.includes('Assassin') ? <div><Image size='medium' src={'./images/role-icons/assassin.jpeg'} /> <h3 style={{position:'relative', top:'-40px'}}>ASSASSIN</h3></div> : null}
+            {this.props.champion.roles.map(role => <div><img size='medium' style={{height: '100px', width: '100px'}} src={`./images/role-icons/${role.toLowerCase()}.jpeg`} /><h3 style={{position:'relative', top:'-40px'}}>{role.toUpperCase()}</h3></div>)}
+
+            {/* {this.props.champion.roles.includes('Fighter') ? <div><Image size='medium' src={'./images/role-icons/fighter.jpeg'} /> <h3 style={{position:'relative', top:'-40px'}}>FIGHTER</h3></div> : null}
+            {this.props.champion.roles.includes('Assassin') ? <div><Image size='medium' src={'./images/role-icons/assassin.jpeg'} /> <h3 style={{position:'relative', top:'-40px'}}>ASSASSIN</h3></div> : null} */}
           </div>
-          <Image size='medium' className='profile-pic' src={this.props.champion.icon_image}/>
+          <div className='stats'>
+            <p>ATTACK: {this.props.champion.info.attack}</p>
+            <p>DEFENSE: {this.props.champion.info.defense}</p>
+            <p>MAGIC: {this.props.champion.info.magic}</p>
+            <p>DIFFICULTY: {this.props.champion.info.difficulty}</p>
+          </div>
         </Card.Content>
 
 

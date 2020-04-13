@@ -71,6 +71,67 @@
 
 /* end display message */
 
+
+
+
+.champion-card {
+  position:relative;
+  height:350px;
+  width:400px;
+  /* margin:0 auto; */
+  /* overflow: auto; */
+}
+
+.champion-card div.role-icons {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  /* z-index: -1; */
+}
+
+.champion-card div.stats {
+  margin: 5px;  
+  font-weight: bold;
+}
+
+.champion-card img.profile-pic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* not sure if these 3 are necessary */
+  -webkit-transition: opacity 300ms ease-in-out; 
+  -moz-transition: opacity 300ms ease-in-out;
+  -o-transition: opacity 300ms ease-in-out;
+  /* this one seems necessary */
+  transition: opacity 300ms ease-in-out;
+  z-index: 1;
+}
+
+.champion-card img.profile-pic:hover {
+  opacity:25%;
+  /* z-index: 0; */
+}
+
+.champion-card h3.champion-name {
+  font-weight: bold;
+  position: absolute;
+  top: 280px;
+  margin: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* default react garbage below */
+
 /* .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -105,39 +166,3 @@
     transform: rotate(360deg);
   }
 } */
-
-
-.champion-card {
-  position:relative;
-  height:360px;
-  width:400px;
-  /* margin:0 auto; */
-  /* overflow: auto; */
-}
-
-.champion-card div.role-icons {
-  text-align: center;
-  display: inline-flex;
-}
-
-.champion-card img.profile-pic {
-  position: absolute;
-  top: 0;
-  left: 0;
-  -webkit-transition: opacity 1s ease-in-out;
-  -moz-transition: opacity 1s ease-in-out;
-  -o-transition: opacity 1s ease-in-out;
-  transition: opacity 1s ease-in-out;
-  z-index: 1;
-}
-
-.champion-card img.profile-pic:hover {
-  opacity:0;
-}
-
-.champion-card h3.champion-name {
-  font-weight: bold;
-  position: absolute;
-  top: 280px;
-  margin: 5px;
-}
