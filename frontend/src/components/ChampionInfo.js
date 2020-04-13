@@ -8,16 +8,15 @@ export default class ChampionInfo extends Component {
         // }
     }
 
-    componentDidUpdate(prevProps){
-      console.log(prevProps.championId)
-      console.log(this.props.championId)
-        if(prevProps.championId !== this.props.championId){
-
-            // fetch(`http://localhost:3000/champions/${this.props.championId}`) // ??????????????
-            // .then(res => res.json())
-            // .then(champion => this.setState({champion}))
-        }
-    }
+//     componentDidUpdate(prevProps){
+//       console.log(prevProps.championId)
+//       console.log(this.props.championId)
+//         if(prevProps.championId !== this.props.championId){
+//             fetch(`http://localhost:3000/champions/${this.props.championId}`) // ??????????????
+//             .then(res => res.json())
+//             .then(champion => this.setState({champion}))
+//         }
+//     }
 
     displayChampionAbilities = (abilities) => {
         return abilities.map(a => {
@@ -129,7 +128,6 @@ export default class ChampionInfo extends Component {
         return(
             <div>
                 {this.displayChampion(champion)}
-                {/* {champion.name} */}
             </div>
         )
     }

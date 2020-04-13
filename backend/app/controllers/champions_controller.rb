@@ -8,7 +8,6 @@ class ChampionsController < ApplicationController
   end
 
   def show
-    # byebug
     champion = Champion.find(params[:id])
     render json: champion
   end

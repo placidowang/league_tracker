@@ -70,7 +70,7 @@ export default class SignUp extends Component {
                         <div className="alert alert-danger" role="alert">
                             {this.state.username_has_errors ? this.state.username_errors.map(error => <li>{`Username ${error}`}</li>) : ""}
                             {this.state.password_has_errors ? this.state.password_errors.map(error => <li>{`Password ${error}`}</li>) : ""}
-                            {this.state.password_has_errors ? this.state.password_confirmation_errors.map(error => <li>{`Password ${error}`}</li>) : ""}
+                            {this.state.password_has_errors ? this.state.password_confirmation_errors.map(error => <li>{`Password Confirmation ${error}`}</li>) : ""}
                         </div>
                     : this.state.errors === "false" ? 
                         <div className="alert alert-success" role="alert">
