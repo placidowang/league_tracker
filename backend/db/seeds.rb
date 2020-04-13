@@ -11,23 +11,25 @@ SummonerProfileChampionJoiner.destroy_all
 
 champs = []
 champions.each do |champion|
-  champs << {
-    key: champion ['key'],
-    name: champion['name'],
-    title: champion['title'],
-    blurb: champion['blurb'],
-    info: champion['info'],
-    roles: champion['roles'],
-    partype: champion['partype'],
-    stats: champion['stats'],
-    icon_image: champion['icon_image'],
-    skins: champion['skins'],
-    lore: champion['lore'],
-    allytips: champion['allytips'],
-    enemytips: champion['enemytips'],
-    spells: champion['spells'],
-    passive: champion['passive']
-  }
+  champs << champion
+  
+  # {
+  #   key: champion ['key'],
+  #   name: champion['name'],
+  #   title: champion['title'],
+  #   blurb: champion['blurb'],
+  #   info: champion['info'],
+  #   roles: champion['roles'],
+  #   partype: champion['partype'],
+  #   stats: champion['stats'],
+  #   icon_image: champion['icon_image'],
+  #   skins: champion['skins'],
+  #   lore: champion['lore'],
+  #   allytips: champion['allytips'],
+  #   enemytips: champion['enemytips'],
+  #   spells: champion['spells'],
+  #   passive: champion['passive']
+  # }
 end
 
 Champion.create(champs)
