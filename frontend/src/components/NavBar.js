@@ -39,11 +39,11 @@ export default class NavBar extends React.Component {
                   <NavLink to = "/champions">Champions</NavLink>
                 </button>
               </li>  
-              <li>
+              {/* <li>
                 <button>
                   <NavLink to = "/champion" >Champion Info</NavLink>
                 </button>
-              </li>
+              </li> */}
               {
                 this.props.login_status ?  
                   <li>

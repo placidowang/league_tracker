@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2020_04_10_165418) do
     t.string "allytips", array: true
     t.string "enemytips", array: true
     t.json "passive"
+    t.string "videoId"
   end
 
   create_table "summoner_profile_champion_joiners", force: :cascade do |t|

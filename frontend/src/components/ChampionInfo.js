@@ -3,16 +3,19 @@ import React , {Component} from 'react'
 export default class ChampionInfo extends Component {
     constructor(){
         super()
-        this.state = {
-            champion: {}
-        }
+        // this.state = {
+        //     champion: {}
+        // }
     }
 
     componentDidUpdate(prevProps){
+      console.log(prevProps.championId)
+      console.log(this.props.championId)
         if(prevProps.championId !== this.props.championId){
-            fetch(`http://localhost:3000/champions/${146}`)
-            .then(res => res.json())
-            .then(champion => this.setState({champion}))
+
+            // fetch(`http://localhost:3000/champions/${this.props.championId}`) // ??????????????
+            // .then(res => res.json())
+            // .then(champion => this.setState({champion}))
         }
     }
 
@@ -44,7 +47,7 @@ export default class ChampionInfo extends Component {
                             <div className="row ">
                                 <div className="col">
                                     <div className="item_col">
-                                        <label className="info">Type: {champion.type.join(", ")}</label>
+                                        <label className="info">Roles: {champion.roles.join(", ")}</label>
                                         <br/>
                                         <br/>
                                         <label className="info">Partype: {champion.partype}</label>
@@ -121,10 +124,12 @@ export default class ChampionInfo extends Component {
     }
 
     render(){
-        let champion = this.state.champion
+        let champion = this.props.displayChampion
+        console.log(champion)
         return(
             <div>
                 {this.displayChampion(champion)}
+                {/* {champion.name} */}
             </div>
         )
     }

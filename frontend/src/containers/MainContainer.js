@@ -16,6 +16,8 @@ export default class MainContainer extends React.Component {
       summonerProfile: {}, // setState when searching API for a specific summoner profile
       champions: [],
       displayChampions: [],
+      // championId: null,
+      displayChampion: {},
       display_message: false,
       message_class: "",
       message_text: "",
@@ -61,6 +63,14 @@ export default class MainContainer extends React.Component {
 
   }
 
+  setChampionId = (championId) => {
+    // this.setState({ championId })
+
+    fetch(`http://localhost:3000/champions/${championId}`)
+    .then(res => res.json())
+    .then(champion => this.setState({displayChampion: champion}))
+  }
+
   render() {
     return(
       <Router >
@@ -74,12 +84,13 @@ export default class MainContainer extends React.Component {
           <NavBar displayMessage = {this.displayMessage} login_status = {this.state.login_status}/>
           <Route exact path = "/login" render = {(routerProps) => <Login {...routerProps} displayMessage = {this.displayMessage}/>} /> 
           <Route exact path = "/signup" component = {SignUp} /> 
-          <Route exact path = "/champion" render = {(routerProps) => <ChampionInfo {...routerProps} championId = {Math.floor(Math.random() * 148)}/>} /> 
+          <Route exact path = "/champion" render = {(routerProps) => <ChampionInfo {...routerProps} displayChampion={this.state.displayChampion}/>} /> 
           <Route exact path = "/summoner" render = {(routerProps) => <SummonerContainer {...routerProps} />} />
           <Route exact path = "/champions" render = {(routerProps) => 
             <ChampionsContainer 
               {...routerProps}
               champions={this.state.displayChampions}
+              setChampionId={this.setChampionId}
             />}/> 
         </div>
       </Router>
