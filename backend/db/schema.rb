@@ -12,24 +12,27 @@
 
 ActiveRecord::Schema.define(version: 2020_04_10_165418) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "champions", force: :cascade do |t|
     t.string "name"
     t.string "title"
-    t.string "stats"
-    t.string "spells"
+    t.json "stats"
+    t.json "spells", array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "key"
     t.string "blurb"
-    t.string "info"
-    t.string "roles"
+    t.json "info"
+    t.string "roles", array: true
     t.string "partype"
     t.string "icon_image"
-    t.string "skins"
+    t.json "skins", array: true
     t.string "lore"
-    t.string "allytips"
-    t.string "enemytips"
-    t.string "passive"
+    t.string "allytips", array: true
+    t.string "enemytips", array: true
+    t.json "passive"
   end
 
   create_table "summoner_profile_champion_joiners", force: :cascade do |t|
@@ -41,6 +44,13 @@ ActiveRecord::Schema.define(version: 2020_04_10_165418) do
 
   create_table "summoner_profiles", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
