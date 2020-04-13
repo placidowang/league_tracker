@@ -3,8 +3,8 @@ class CreateChampions < ActiveRecord::Migration[6.0]
     create_table :champions do |t|
       t.string :name
       t.string :title
-      t.string :stats
-      t.string :spells
+      t.json :stats
+      t.json :spells, array: true
 
       t.timestamps
     end
