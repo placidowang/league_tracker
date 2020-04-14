@@ -297,7 +297,7 @@
   flex-wrap: nowrap;
   position: relative;
   top: -30px;
-  /* margin: 5px; */
+  margin: 5px;
 }
 
 .progress1 {
