@@ -336,7 +336,9 @@
 
 
 
-
+/*-------------------------------------------
+Champion cards
+--------------------------------------------*/
 .champion-card {
   position:relative;
   height:350px;
@@ -392,8 +394,6 @@
 .stat-container {
   display: flex;
   flex-wrap: nowrap;
-  position: relative;
-  top: -30px;
   margin: 5px;
 }
 

@@ -9,6 +9,7 @@ export default class Body extends Component {
                 <div className="media position-relative ability">
                     <img src={a.image} className="mr-3" alt="ability"/>
                     <div className="media-body">
+                        {/* may not need id */}
                         <h1>{a.id}</h1>
                         <h3>{a.name}</h3>
                         <p>- Description: {a.description}</p>

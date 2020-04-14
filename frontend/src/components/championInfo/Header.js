@@ -1,4 +1,5 @@
 import React , {Component} from 'react' 
+import ChampionStatBars from '../ChampionStatBars.js'
 
 export default class Header extends Component {
     render(){
@@ -15,9 +16,10 @@ export default class Header extends Component {
                                 <label className="info">Roles: {champion.roles.join(", ")}</label>
                                 <br/>
                                 <br/>
+                                {/* consider renaming Partype to Resource Type or removing altogether */}
                                 <label className="info">Partype: {champion.partype}</label>
                             </div>
-                            <div className="item_col">
+                            {/* <div className="item_col">
                                 <label className="info">
                                     Attack: {champion.info.attack}
                                 </label>
@@ -31,7 +33,9 @@ export default class Header extends Component {
                                 </label>
                                 <br/>
                                 <label className="info">Difficulty: {champion.info.difficulty}</label>
-                            </div>
+                            </div> */}
+                            <ChampionStatBars info={champion.info} />
+
                         </div>
                         <div className="champion_blurd col ">
                             <p>{champion.blurb}</p>

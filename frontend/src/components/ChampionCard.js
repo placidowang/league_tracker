@@ -26,7 +26,7 @@ class ChampionCard extends React.Component {
         onMouseOver={this.transition}>
 
 
-        <Card.Content style={{height: 'auto', width: 'auto'}}>
+        <Card.Content >
           <Image size='medium' className='profile-pic' src={this.props.champion.icon_image}/>
             
           <div className='role-icons'>
@@ -42,7 +42,9 @@ class ChampionCard extends React.Component {
             <p>MAGIC: {this.props.champion.info.magic}</p>
             <p>DIFFICULTY: {this.props.champion.info.difficulty}</p>
           </div> */}
-          <ChampionStatBars info={this.props.champion.info} />
+          <div style={{position: 'relative', top: '-30px'}}>
+            <ChampionStatBars  info={this.props.champion.info} />
+          </div>
         </Card.Content>
         
         <Card.Content style={{}}>
