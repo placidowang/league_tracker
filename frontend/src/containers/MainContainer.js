@@ -28,7 +28,8 @@ export default class MainContainer extends React.Component {
     .then(champions => {
       this.setState({
         champions: champions,
-        displayChampions: champions
+        displayChampions: champions,
+        summonerProfile: {}
       },
       )
     })
@@ -60,6 +61,19 @@ export default class MainContainer extends React.Component {
 
   }
 
+  searchSummoner = () => {
+    // console.log('test')
+    let obj = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    }
+    fetch('http://localhost:3000/search_summoner', obj)
+      .then(resp => resp.json())
+      .then(summoner => console.log(summoner))
+  }
+
   render() {
     return(
       <Router >
@@ -73,14 +87,14 @@ export default class MainContainer extends React.Component {
           <NavBar displayMessage = {this.displayMessage} login_status = {this.state.login_status}/>
           <Route exact path = "/login" render = {(routerProps) => <Login {...routerProps} displayMessage = {this.displayMessage}/>} /> 
           <Route exact path = "/signup" component = {SignUp} /> 
-          <Route exact path = "/summoner" render = {(routerProps) => <SummonerContainer {...routerProps} />} />
+          <Route exact path = "/summoner" render = {(routerProps) => <SummonerContainer {...routerProps} searchSummoner={this.searchSummoner}/>} />
           <Route exact path = "/champions" render = {(routerProps) => 
             <ChampionsContainer 
               {...routerProps}
               champions={this.state.displayChampions}
             />}/> 
         </div>
-      </Router>
+        </Router>
     )
   }
 }
