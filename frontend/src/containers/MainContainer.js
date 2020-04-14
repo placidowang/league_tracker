@@ -32,7 +32,8 @@ export default class MainContainer extends React.Component {
     .then(champions => {
       this.setState({
         champions: champions,
-        displayChampions: champions
+        displayChampions: champions,
+        summonerProfile: {}
       },
       )
     })
@@ -64,10 +65,25 @@ export default class MainContainer extends React.Component {
 
   }
 
+
+  searchSummoner = () => {
+    // console.log('test')
+    let obj = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    }
+    fetch('http://localhost:3000/search_summoner', obj)
+      .then(resp => resp.json())
+      .then(summoner => console.log(summoner))
+  }
+  
   setChampionId = (championId) => {
     fetch(`http://localhost:3000/champions/${championId}`)
     .then(res => res.json())
     .then(champion => this.setState({displayChampion: champion}))
+
   }
 
   render() {
@@ -83,6 +99,9 @@ export default class MainContainer extends React.Component {
           <NavBar displayMessage = {this.displayMessage} login_status = {this.state.login_status}/>
           <Route exact path = "/login" render = {(routerProps) => <Login {...routerProps} displayMessage = {this.displayMessage}/>} /> 
           <Route exact path = "/signup" component = {SignUp} /> 
+
+          
+
           <Route exact path = "/champion" render = {(routerProps) => <ChampionInfo {...routerProps} displayChampion={this.state.displayChampion}/>} /> 
           <Route exact path = "/summoner" render = {(routerProps) => <SummonerContainer {...routerProps} />} />
             <Route exact path = "/champions" render = {(routerProps) => 
@@ -92,7 +111,7 @@ export default class MainContainer extends React.Component {
                 setChampionId={this.setChampionId}
               />}/> 
         </div>
-      </Router>
+        </Router>
     )
   }
 }
