@@ -1,4 +1,5 @@
 import React , {Component} from 'react'
+import ChampionStatBars from './ChampionStatBars.js'
 
 export default class ChampionInfo extends Component {
     constructor(){
@@ -24,6 +25,7 @@ export default class ChampionInfo extends Component {
                 <div className="media position-relative ability">
                     <img src={a.image} className="mr-3" alt="ability"/>
                     <div className="media-body">
+                      {/* might not need id */}
                         <h1>{a.id}</h1>
                         <h3>{a.name}</h3>
                         <p>- Description: {a.description}</p>
@@ -49,9 +51,10 @@ export default class ChampionInfo extends Component {
                                         <label className="info">Roles: {champion.roles.join(", ")}</label>
                                         <br/>
                                         <br/>
+                                        {/* consider renaming Partype to Resource, or have it not display at all */}
                                         <label className="info">Partype: {champion.partype}</label>
                                     </div>
-                                    <div className="item_col">
+                                    {/* <div className="item_col">
                                         <label className="info">
                                             Attack: {champion.info.attack}
                                         </label>
@@ -65,7 +68,8 @@ export default class ChampionInfo extends Component {
                                         </label>
                                         <br/>
                                         <label className="info">Difficulty: {champion.info.difficulty}</label>
-                                    </div>
+                                    </div> */}
+                                    <ChampionStatBars info={champion.info} />
                                 </div>
                                 <div className="champion_blurd col ">
                                     <p>{champion.blurb}</p>
