@@ -1,5 +1,6 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
+import ChampionStatBars from './ChampionStatBars.js'
 import { Grid, Card, Image, Reveal, Placeholder, Transition } from 'semantic-ui-react'
 
 class ChampionCard extends React.Component {
@@ -35,12 +36,13 @@ class ChampionCard extends React.Component {
                 <h3 style={{position:'relative', top:'-40px'}}>{role.toUpperCase()}</h3>
               </div>)}
           </div>
-          <div className='stats'>
+          {/* <div className='stats'>
             <p>ATTACK: {this.props.champion.info.attack}</p>
             <p>DEFENSE: {this.props.champion.info.defense}</p>
             <p>MAGIC: {this.props.champion.info.magic}</p>
             <p>DIFFICULTY: {this.props.champion.info.difficulty}</p>
-          </div>
+          </div> */}
+          <ChampionStatBars info={this.props.champion.info} />
         </Card.Content>
         
         <Card.Content style={{}}>

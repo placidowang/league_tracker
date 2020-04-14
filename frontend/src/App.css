@@ -389,9 +389,18 @@
   margin: 5px;
 }
 
+.stat-container {
+  display: flex;
+  flex-wrap: nowrap;
+  position: relative;
+  top: -30px;
+  margin: 5px;
+}
 
-
-
+.progress1 {
+  height: 5px;
+  top: -5px;
+}
 
 
 
