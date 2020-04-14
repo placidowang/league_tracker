@@ -46,18 +46,20 @@ export default class ChampionsContainer extends React.Component {
   render() {
     // console.log(this.props.history)
     return(
-      <div style={{width: '1200px', margin: '0px 0px', position: 'relative', left: '50vw', transform: 'translateX(-50%)'}}>
-        <ChampionSearchBar />
+      <div className="champions_card_container">
+        <div style={{width: '1200px', margin: '0px 0px', position: 'relative', left: '50vw', transform: 'translateX(-50%)', backgroundColor: 'black'}}>
+          <ChampionSearchBar />
 
-        <Card.Group itemsPerRow={4}>
-          {this.props.champions.length > 0
-            ? this.props.champions.map(champion =>
-              <ChampionCard
-                history={this.props.history}
-                champion={champion}
-                setChampionId={this.props.setChampionId} />)
-            : this.generatePlaceholderRows(placeholders, 4)}
-        </Card.Group>
+          <Card.Group itemsPerRow={4}>
+            {this.props.champions.length > 0
+              ? this.props.champions.map(champion =>
+                <ChampionCard
+                  history={this.props.history}
+                  champion={champion}
+                  setChampionId={this.props.setChampionId} />)
+              : this.generatePlaceholderRows(placeholders, 4)}
+          </Card.Group>
+        </div>
       </div>
     )
   }

@@ -1,9 +1,26 @@
-
+body{
+  background-position-y: 4vh;
+  background-size: cover;
+  background-image: url("https://wallpaperaccess.com/full/217099.png");
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100vw;
+}
 .App {
+  position: relative;
+  top: -1vh;
   color: white;
-  background-color: black;
-  height: 100%;
   margin: 0px;
+  width: 100vw;
+}
+
+.champions_card_container{
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.6);
+  background-attachment: fixed;
+  width: 100vw;
+  top: -5vh;
+  padding: 10vh 0;
 }
 
 /* Login and Signup styling */
@@ -73,6 +90,12 @@
 
 
 /* start champion info page */
+
+.champion_main_container{
+  position: relative;
+  top: -5vh;
+  background-color: rgba(0, 0, 0, 0.8);
+}
 
 /* header */
 .champion_header{
