@@ -178,16 +178,27 @@
   margin: 0 auto;
 }
 
-.champion_ability_title, .champion_spotlight_title , .champion_info_title{
+.champion_ability_title, .champion_spotlight_title , .champion_info_title , .champion_skins_title{
   font-size: 4vh;
   position: relative;
   left: 2vw;
   font-family: Times, Times New Roman, serif;
 }
 
+.champion_skin_title{
+  font-size: 6vh;
+  position: relative;
+  left: 2vw;
+  font-family: Blippo, fantasy;
+}
+
 .champion_ability_title::before,
 .champion_spotlight_title::before,
 .champion_info_title::before,
+.champion_skin_title::before,
+.champion_skin_title::after,
+.champion_skins_title::before,
+.champion_skins_title::after,
 .champion_info_title::after,
 .champion_spotlight_title::after,
 .champion_ability_title::after {
@@ -208,7 +219,7 @@
 }
 
 .champion_spotlight_title::before{
-  width: 16vw;
+  width: 13vw;
 }
 
 .champion_spotlight_title::after{
@@ -221,6 +232,92 @@
 
 .champion_info_title::after{
   width: 30vw;
+}
+
+.champion_skin_title::after,
+.champion_skin_title::before{
+  width: 5vw;
+}
+
+.champion_skins_title::after,
+.champion_skins_title::before{
+  width: 30vw;
+}
+
+.champion_skins_title {
+  font-size: 4em;
+}
+
+.skin_container{
+  margin-top: 10vh;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+}
+
+.skin_image img{
+  width: 100vw;
+  height: 100vh;
+}
+
+.skin_video_container{
+  text-align: center;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  bottom: 100vh;
+  z-index: 1;
+}
+
+.skin_video_container label{
+  position: relative;
+  top: 5vh;
+}
+
+.skin_video_container small{
+  color: rgb(133, 196, 252);
+  position: relative;
+  right: 5vw;
+  top: 5vh;
+  float: right;
+  font-size: 3em;
+  cursor: pointer;
+  transition: ease-in-out 0.3s;
+}
+
+.skin_video_container small:hover{
+  font-size: 3.5em;
+  text-shadow: 0 0 5px rgba(60, 127, 185, 0.8);
+}
+
+.skin_video{
+  border: 1px solid white;
+  border-radius: 20px;
+  height: 80vh;
+  width: 80vw;
+  top: 8vh;
+  position: relative;
+  margin: 0 auto;
+}
+
+.skin_btn{
+  width: 10vw;
+  height: 4vh;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-color: rgb(0, 132, 248);
+  border-radius: 5px;
+  color: rgb(133, 196, 252);
+  font-family: Times, Times New Roman, serif;
+  font-size: 1.5em;
+  transition: ease-in-out 0.5s;
+}
+
+.skin_btn:hover {
+  box-shadow: 0 0 9px rgba(103, 182, 252, 0.8);
+  text-shadow: 0 0 5px rgba(28, 142, 241, 0.6);
+  width: 12vw;
 }
 
 .ability{

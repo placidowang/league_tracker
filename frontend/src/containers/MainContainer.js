@@ -26,6 +26,7 @@ export default class MainContainer extends React.Component {
   }
 
   componentDidMount() {
+    localStorage.clear()
     fetch('http://localhost:3000/champions')
     .then(r => r.json())
     .then(champions => {
@@ -64,8 +65,6 @@ export default class MainContainer extends React.Component {
   }
 
   setChampionId = (championId) => {
-    // this.setState({ championId })
-
     fetch(`http://localhost:3000/champions/${championId}`)
     .then(res => res.json())
     .then(champion => this.setState({displayChampion: champion}))

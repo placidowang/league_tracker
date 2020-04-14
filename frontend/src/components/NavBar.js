@@ -30,12 +30,15 @@ export default class NavBar extends React.Component {
           <div className="navbar-navigation-items">
             <ul>
               <li>
-                <button onClick = {() => this.checkForLogin()}>
+                <button onClick = {() => {
+                  this.checkForLogin()
+                  window.scrollTo(0, 0)
+                }}>
                   <NavLink to = "/summoner">Summoner</NavLink>
                 </button>
               </li>
               <li>
-                <button >
+                <button onClick = {() => window.scrollTo(0, 0)}>
                   <NavLink to = "/champions">Champions</NavLink>
                 </button>
               </li>  
@@ -48,15 +51,19 @@ export default class NavBar extends React.Component {
                 this.props.login_status ?  
                   <li>
                     <button onClick= {() => {
-                    localStorage.clear()
-                    this.props.displayMessage("LogOut Success")
+                      window.scrollTo(0, 0)
+                      localStorage.clear()
+                      this.props.displayMessage("LogOut Success")
                     }}>
                       LogOut
                    </button>
                   </li>
                 : 
                   <li>
-                    <button onClick= {() => localStorage.clear()}>
+                    <button onClick= {() => {
+                      window.scrollTo(0, 0)
+                      localStorage.clear()
+                    }}>
                       <NavLink to = "/login">Login</NavLink>
                     </button>
                   </li>
