@@ -115,37 +115,58 @@
     width: 22vw
 }
 
-.champion_info .row{
-  width: 70vw;
+.champion_info_icons{
+  width: 5vw;
+  height: 9vh;
+  display: inline-block;
+  margin: 0 1vw;
+  border: 1px solid white;
+  background-color: black;
+  border-radius: 7px;
+  position: relative;
+  bottom: 2vh;
 }
 
-.champion_info .row .col{
+.champion_info_icons h3{
   position: relative;
-  top: 2vh
+  font-size: 1.5vh;
+  top: -30px
+}
+
+.item_container{
+  position: relative;
+  margin-top: 2vh;
+}
+
+.item_container .item_main_col{
+  width: 40vw;
+  display: inline-block;
+  font-family: Times, Times New Roman, serif;
+}
+
+.champion_partype{
+  font-size: 1.5vw;
 }
 
 .item_col{
   display: inline-block;
-  margin: 0 2vw;
+  margin: 0 1vw;
+  width: 15vw;
+  font-size: 15px;
 }
 
-.item_col label.info{
-  font-size: 2em;
-  font-family: Times, Times New Roman, serif;
+.item_col p {
   float: left;
-  margin-bottom: 12px;
-}
-
-.item_col label.info span{
-  font-size: 1.5em;
+  margin-left: 0.5vw;
 }
 
 .champion_blurd{
-  width: 60%;
-  margin: 0 auto;
-  padding: 20px;
+  position: relative;
+  bottom: 3vh;
   font-size: 18px;
   border-left: 0.2px solid white;
+  font-size: 22px;
+  padding-left: 2vw;
 }
 
 /* end header */
