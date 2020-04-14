@@ -85,12 +85,12 @@ export default class MainContainer extends React.Component {
           <Route exact path = "/signup" component = {SignUp} /> 
           <Route exact path = "/champion" render = {(routerProps) => <ChampionInfo {...routerProps} displayChampion={this.state.displayChampion}/>} /> 
           <Route exact path = "/summoner" render = {(routerProps) => <SummonerContainer {...routerProps} />} />
-          <Route exact path = "/champions" render = {(routerProps) => 
-            <ChampionsContainer 
-              {...routerProps}
-              champions={this.state.displayChampions}
-              setChampionId={this.setChampionId}
-            />}/> 
+            <Route exact path = "/champions" render = {(routerProps) => 
+              <ChampionsContainer 
+                {...routerProps}
+                champions={this.state.displayChampions}
+                setChampionId={this.setChampionId}
+              />}/> 
         </div>
       </Router>
     )
