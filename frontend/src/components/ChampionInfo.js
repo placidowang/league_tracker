@@ -1,131 +1,35 @@
 import React , {Component} from 'react'
+import Header from './championInfo/Header'
+import Body from './championInfo/Body'
+import Skins from './championInfo/Skins'
 
 export default class ChampionInfo extends Component {
-    constructor(){
-        super()
-        this.state = {
-            champion: {}
-        }
-    }
 
     componentDidUpdate(prevProps){
-        if(prevProps.championId !== this.props.championId){
-            fetch(`http://localhost:3000/champions/${146}`)
-            .then(res => res.json())
-            .then(champion => this.setState({champion}))
+        if(prevProps.displayChampion !== this.props.displayChampion){
+            console.log(prevProps.displayChampion)
+            console.log(this.props.displayChampion)
+            window.scrollTo(0, 0)
         }
-    }
-
-    displayChampionAbilities = (abilities) => {
-        return abilities.map(a => {
-            return(
-                <div className="media position-relative ability">
-                    <img src={a.image} className="mr-3" alt="ability"/>
-                    <div className="media-body">
-                        <h1>{a.id}</h1>
-                        <h3>{a.name}</h3>
-                        <p>- Description: {a.description}</p>
-                        <p>- Cooldown: {a.cooldown.join("/")}</p>
-                    </div>
-                </div>
-            )
-        })
     }
  
     displayChampion = (champion) => {
         if(champion.name){
             return (
                 <div className="champion_container">
-                    <div className="champion_header">
-                        <img src={champion.skins[0].image} alt="img"/>
-                        <div className="champion_info">
-                            <h3>{champion.title.toUpperCase()}</h3>
-                            <label className="champion_name">{champion.name}</label>
-                            <div className="row ">
-                                <div className="col">
-                                    <div className="item_col">
-                                        <label className="info">Type: {champion.type.join(", ")}</label>
-                                        <br/>
-                                        <br/>
-                                        <label className="info">Partype: {champion.partype}</label>
-                                    </div>
-                                    <div className="item_col">
-                                        <label className="info">
-                                            Attack: {champion.info.attack}
-                                        </label>
-                                        <br/>
-                                        <label className="info">
-                                            Defense: {champion.info.defense}
-                                        </label>
-                                        <br/>
-                                        <label className="info">
-                                            Magic: {champion.info.magic}
-                                        </label>
-                                        <br/>
-                                        <label className="info">Difficulty: {champion.info.difficulty}</label>
-                                    </div>
-                                </div>
-                                <div className="champion_blurd col ">
-                                    <p>{champion.blurb}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="champion_body">
-                        <div className="champion_info_container">
-                            <h1 className="champion_info_title">Stats</h1>
-                            {Object.keys(champion.stats).map(key => <label><strong>{key.charAt(0).toUpperCase() + key.replace(/^\w/, "")}</strong>: {champion.stats[key]}</label>)}
-                        </div>
-                        <div className="champion_info_container">
-                            <h1 className="champion_info_title">Lore</h1>
-                            <p>{champion.lore}</p>
-                        </div>
-                        <div className="champion_info_container">
-                            <h1 className="champion_info_title">Allytips</h1>
-                            {champion.allytips.map(allytip => <p>-{allytip}</p>)}
-                        </div>
-                        <div className="champion_info_container">
-                            <h1 className="champion_info_title">Enemytips</h1>
-                            {champion.enemytips.map(enemytip => <p>-{enemytip}</p>)}
-                        </div>
-                        <div className="row">
-                            <div className="col">
-                                <h1 className="champion_ability_title">ABILITIES</h1>
-                                <div className="media position-relative ability">
-                                    <img src={champion.passive.image} className="mr-3" alt="ability"/>
-                                    <div className="media-body">
-                                        <h1>{champion.name} Passive</h1>
-                                        <h3>{champion.passive.name}</h3>
-                                        <p>- Description: {champion.passive.description.replace(/<[^>]*>/g, '')}</p>
-                                    </div>
-                                </div>
-                                {this.displayChampionAbilities(champion.spells)}
-                            </div>
-                            <div className="col">
-                                <h1 className="champion_spotlight_title">Champion Spotlight</h1>
-                                <div className="embed-responsive embed-responsive-16by9 champion_spotlight">
-                                    <iframe className="embed-responsive-item" src={`https://www.youtube.com/embed/${champion.videoId}`} allowFullScreen title={champion.name}></iframe>
-                                </div>
-                            </div>
-                        </div> 
-                    </div>
-                    {champion.skins.map(skin => 
-                        <div>
-                            <img src={skin.image}/>
-                            <iframe src={`https://www.youtube.com/embed/${skin.videoId}`} frameborder="0"></iframe>
-                        </div>
-                    )}
+                    <Header champion = {champion} />
+                    <Body champion = {champion} />
+                    <Skins skins = {champion.skins} champion_name = {champion.name}/> 
                 </div>
             )
         }
     }
 
     render(){
-        let champion = this.state.champion
+        let champion = this.props.displayChampion
         return(
             <div>
-                {/* {this.displayChampion(champion)} */}
-                {champion.name}
+                {this.displayChampion(champion)}
             </div>
         )
     }

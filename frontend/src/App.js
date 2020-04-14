@@ -12,7 +12,7 @@ function App() {
       <MainContainer />
       </main>
     </div>
-  );
+);
 }
 
 export default App;

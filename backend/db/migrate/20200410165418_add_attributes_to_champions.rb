@@ -11,5 +11,6 @@ class AddAttributesToChampions < ActiveRecord::Migration[6.0]
     add_column :champions, :allytips, :string, array: true
     add_column :champions, :enemytips, :string, array: true
     add_column :champions, :passive, :json
+    add_column :champions, :videoId, :string
   end
 end
