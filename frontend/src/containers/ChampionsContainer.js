@@ -31,13 +31,11 @@ export default class ChampionsContainer extends React.Component {
 
   generateRows = (array, i) => {
     return(
-    // <Grid.Row inverted>
       array.slice(i, i+4).map(el => el)
-    // </Grid.Row>
     )
   }
 
-  generatePlaceholderRows = (array, numberOfRows) => { // abstract to create rows for both placeholders and for champions
+  generatePlaceholderRows = (array, numberOfRows) => {
     const rows = []
     for (let i = 0; i < numberOfRows; i++) {
       rows.push(this.generateRows(array, i*4))
