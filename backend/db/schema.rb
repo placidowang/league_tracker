@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2020_04_14_150936) do
     t.string "allytips", array: true
     t.string "enemytips", array: true
     t.json "passive"
+    t.string "videoId"
   end
 
   create_table "search_terms", force: :cascade do |t|

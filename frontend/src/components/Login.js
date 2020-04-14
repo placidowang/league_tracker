@@ -51,7 +51,7 @@ export default class Login extends Component {
                         </div>
                     : ""
                 }
-                <div class="form-group login_content">
+                <div className="form-group login_content">
                     <h3 >Username</h3>
                     <input type="text" className={
                         this.state.status === "Invalid Username or Password" ? "form-control is-invalid"
@@ -59,7 +59,7 @@ export default class Login extends Component {
                         : "form-control"} name="username" onChange = {(e) => this.handleChange(e)}/>
                 </div>
                 <br/>
-                <div class="form-group login_content">
+                <div className="form-group login_content">
                     <h3 >Password</h3>
                     <input type="password" className={
                         this.state.status === "Invalid Username or Password" ? "form-control is-invalid"

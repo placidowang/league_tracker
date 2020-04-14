@@ -4,6 +4,7 @@ import ChampionsContainer from './ChampionsContainer.js'
 import Login from '../components/Login'
 import SignUp from '../components/SignUp'
 import NavBar from '../components/NavBar'
+import ChampionInfo from '../components/ChampionInfo'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 
 
@@ -15,14 +16,17 @@ export default class MainContainer extends React.Component {
       summonerProfile: {}, // setState when searching API for a specific summoner profile
       champions: [],
       displayChampions: [],
+      // championId: null,
+      displayChampion: {},
       display_message: false,
       message_class: "",
       message_text: "",
-      login_status: false
+      login_status: false,
     }
   }
 
   componentDidMount() {
+    localStorage.clear()
     fetch('http://localhost:3000/champions')
     .then(r => r.json())
     .then(champions => {
@@ -61,6 +65,7 @@ export default class MainContainer extends React.Component {
 
   }
 
+
   searchSummoner = () => {
     // console.log('test')
     let obj = {
@@ -73,13 +78,20 @@ export default class MainContainer extends React.Component {
       .then(resp => resp.json())
       .then(summoner => console.log(summoner))
   }
+  
+  setChampionId = (championId) => {
+    fetch(`http://localhost:3000/champions/${championId}`)
+    .then(res => res.json())
+    .then(champion => this.setState({displayChampion: champion}))
+
+  }
 
   render() {
     return(
       <Router >
         <div>
           <div 
-            class={`${this.state.message_class} message`} 
+            className={`${this.state.message_class} message`} 
             role="alert"
             >
             {this.state.display_message ? <h4>{this.state.message_text}</h4> : "" }
@@ -87,11 +99,17 @@ export default class MainContainer extends React.Component {
           <NavBar displayMessage = {this.displayMessage} login_status = {this.state.login_status}/>
           <Route exact path = "/login" render = {(routerProps) => <Login {...routerProps} displayMessage = {this.displayMessage}/>} /> 
           <Route exact path = "/signup" component = {SignUp} /> 
+
+          
+
+          <Route exact path = "/champion" render = {(routerProps) => <ChampionInfo {...routerProps} displayChampion={this.state.displayChampion}/>} /> 
           <Route exact path = "/summoner" render = {(routerProps) => <SummonerContainer {...routerProps} searchSummoner={this.searchSummoner}/>} />
+
           <Route exact path = "/champions" render = {(routerProps) => 
             <ChampionsContainer 
               {...routerProps}
               champions={this.state.displayChampions}
+              setChampionId={this.setChampionId}
             />}/> 
         </div>
         </Router>
