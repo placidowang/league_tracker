@@ -10,7 +10,9 @@ export default class ChampionsContainer extends React.Component {
   render() {
     return(
       <div id='champions-container'>
-        <ChampionSearchBar />
+        <ChampionSearchBar
+          searchChampions={this.props.searchChampions}
+          championsSearchTerm={this.props.championsSearchTerm} />
         <ChampionsCardContainer
           champions={this.props.champions}
           history={this.props.history}

@@ -17,6 +17,12 @@ export default class MainContainer extends React.Component {
       champions: [],
       displayChampions: [],
       displayChampion: {},
+      championsSearchTerm: "",
+      championsSortType: "",
+      championsRoleFilters: [
+
+      ],
+      championsDifficultyFilter: [],
       display_message: false,
       message_class: "",
       message_text: "",
@@ -58,11 +64,33 @@ export default class MainContainer extends React.Component {
     }, 3000);;
   }
 
-  sortChampions = () => {
+  displayChampions = () => {
+    let newDisplayChampions = []
 
+    //search
+    newDisplayChampions = this.state.champions.filter(champion => champion.name.toLowerCase().includes(this.state.championsSearchTerm.toLowerCase()))
+
+    //sort
+
+    //filter
+
+    //display
+    this.setState({
+      displayChampions: newDisplayChampions
+    })
   }
 
-  searchChampions = () => {
+  // consider using debounce
+  searchChampions = (term) => {
+    this.setState({ championsSearchTerm: term },()=>this.displayChampions())
+  }
+  
+  sortChampions = (type) => {
+    this.setState({ championsSortType: type })
+    this.displayChampions()
+  }
+
+  filterChampionsByRole = (role) => {
 
   }
 
@@ -137,12 +165,15 @@ export default class MainContainer extends React.Component {
               summoner = {this.state.summoner}
               summonerLoginStatus = {this.state.summonerLoginStatus}
             />}/>
-            <Route exact path = "/champions" render = {(routerProps) => 
-              <ChampionsContainer 
-                {...routerProps}
-                champions={this.state.displayChampions}
-                setChampionId={this.setChampionId}
-              />}/> 
+          <Route exact path = "/champions" render = {(routerProps) => 
+            <ChampionsContainer 
+              {...routerProps}
+              champions={this.state.displayChampions}
+              setChampionId={this.setChampionId}
+              searchChampions={this.searchChampions}
+              championsSearchTerm={this.state.championsSearchTerm}
+
+            />}/> 
         </div>
         </Router>
     )
