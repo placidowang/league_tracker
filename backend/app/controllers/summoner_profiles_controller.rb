@@ -1,6 +1,6 @@
 class SummonerProfilesController < ApplicationController
 
-    # skip_before_action :logged_in?, only: [:search_summoner]
+    skip_before_action :logged_in?, only: [:search_summoner]
 
     def index
         render json: {message: "you're logged in"}
@@ -47,21 +47,19 @@ class SummonerProfilesController < ApplicationController
 
     def filterData(summoner,rank,matches,champions)
         data = {}
+        data["name"] = summoner["name"]
         data["summonerLevel"] = summoner["summonerLevel"]
         data["profileImage"] = "http://ddragon.leagueoflegends.com/cdn/10.8.1/img/profileicon/#{summoner["profileIconId"]}.png"
         data["summoerId"] = summoner["id"]
         data["accountId"] = summoner["accountId"]
-        data["ranks"] = []
 
-        rank.each do |rank| 
-            rank_obj = {}
-            rank_obj["rankType"] = rank["queueType"]
-            rank_obj["tier"] = rank["tier"]
-            rank_obj["rank"] = rank["rank"]
-            rank_obj["wins"] = rank["wins"]
-            rank_obj["losses"] = rank["losses"] 
-            data["ranks"] << rank_obj
-        end
+        rank_obj = rank.find{|r| r["queueType"] == "RANKED_SOLO_5x5"}
+        
+        data["rankType"] = rank_obj["queueType"]
+        data["tier"] = rank_obj["tier"]
+        data["rankLevel"] = rank_obj["rank"]
+        data["wins"] = rank_obj["wins"]
+        data["losses"] = rank_obj["losses"] 
 
         data["matches"] = matches
         data["champions"] = []

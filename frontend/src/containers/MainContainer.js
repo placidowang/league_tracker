@@ -120,7 +120,7 @@ export default class MainContainer extends React.Component {
     }
     fetch('http://localhost:3000/search_summoner',obj)
       .then(resp => resp.json())
-      .then(summoner => console.log(summoner))
+      .then(summoner => this.setState({summoner}))
   }
   
   setChampionId = (championId) => {
@@ -155,16 +155,37 @@ export default class MainContainer extends React.Component {
             >
             {this.state.display_message ? <h4>{this.state.message_text}</h4> : "" }
           </div>
-          <NavBar displayMessage = {this.displayMessage} login_status = {this.state.login_status} checkForLogin = {this.checkForLogin}/>
-          <Route exact path = "/login" render = {(routerProps) => <Login {...routerProps} displayMessage = {this.displayMessage}/>} /> 
+
+          <NavBar 
+            displayMessage = {this.displayMessage} 
+            login_status = {this.state.login_status} 
+            checkForLogin = {this.checkForLogin}
+          />
+
+          <Route exact path = "/login" render = {(routerProps) => 
+            <Login 
+              {...routerProps} 
+              displayMessage = {this.displayMessage}
+            />}
+          /> 
+
           <Route exact path = "/signup" component = {SignUp} /> 
-          <Route exact path = "/champion" render = {(routerProps) => <ChampionInfo {...routerProps} displayChampion={this.state.displayChampion}/>} /> 
+
+          <Route exact path = "/champion" render = {(routerProps) => 
+            <ChampionInfo 
+              {...routerProps} 
+              displayChampion={this.state.displayChampion}
+            />}
+          /> 
+
           <Route exact path = "/summoner" render = {(routerProps) => 
             <SummonerContainer {...routerProps} 
               searchSummoner = {this.searchSummoner} 
               summoner = {this.state.summoner}
               summonerLoginStatus = {this.state.summonerLoginStatus}
-            />}/>
+            />}
+          />
+
           <Route exact path = "/champions" render = {(routerProps) => 
             <ChampionsContainer 
               {...routerProps}
@@ -172,8 +193,8 @@ export default class MainContainer extends React.Component {
               setChampionId={this.setChampionId}
               searchChampions={this.searchChampions}
               championsSearchTerm={this.state.championsSearchTerm}
-
-            />}/> 
+            />}
+          /> 
         </div>
         </Router>
     )

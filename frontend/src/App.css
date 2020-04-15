@@ -453,6 +453,87 @@ body{
   width: 5.5vw;
 }
 
+/* summoner profile */
+
+.summoner_header{
+  position: relative;
+  height: 18vh;
+  width: 18vw;
+  top: 2vh;
+  overflow: hidden;
+  border-bottom: 1px solid white ;
+  margin: 0 auto;
+}
+
+.summoner_name{
+  position: relative;
+  width: 8vw;
+  float: right;
+  top: 6vh;
+}
+
+.summoner_name h1{
+  font-family: Times, Times New Roman, serif;
+  font-size: 2vw;
+  margin-left: 1vw;
+}
+
+.summoner_item{
+  display: inline-block;
+}
+
+.summoner_profile_image img {
+  height: 14vh;
+  width: 9vw;
+  position: relative;
+  border-radius: 10px;
+}
+
+.summoner_profile_image{
+  width: 9vw;
+  height: 13vh;
+  position: relative;
+  left: 1vw;
+  bottom: 2vh;
+  text-align: center;
+  top: 1vh;
+}
+
+.summoner_level{
+  position: relative;
+  background-color: rgba(3, 3, 3, 0.9);
+  border: 1px solid gold;
+  border-radius: 7px;
+  height: 2vh;
+  width: 3vw;
+  margin: 0 auto;
+  bottom: 1vh;
+  text-align: center;
+}
+
+.summoner_level label{
+  position: relative;
+  background-color: rgba(3, 3, 3, 0.9);
+  width: 1.5vw;
+  height: 1.8vh;
+  font-size: 0.9vw;
+  font-family: Times, Times New Roman, serif;
+}
+
+.summoner_ranks{
+  margin-top: 5vh;
+  text-align: center;
+}
+
+.summoner_ranks h4 {
+  font-family: Times, Times New Roman, serif;
+  font-size: 1vw;
+}
+
+.summoner_ranks img {
+  width: 13vw;
+  height: 27vh;
+}
 
 /*-------------------------------------------
 Champions page

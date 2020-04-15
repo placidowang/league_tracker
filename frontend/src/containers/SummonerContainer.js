@@ -15,7 +15,7 @@ export default class SummonerContainer extends React.Component {
         <div className="summoner_main_container">
           <SummonerSearchBar searchSummoner = {this.props.searchSummoner}/>
           <div className="summoner_info_container">
-            <ProfileContainer />
+            <ProfileContainer summoner = {summoner}/>
             <MatchContainer />
           </div>
         </div>
