@@ -1,13 +1,13 @@
 import React from 'react'
 import ChampionSearchBar from '../components/ChampionSearchBar.js'
 import ChampionsCardContainer from './ChampionsCardContainer.js'
-import { Card, Placeholder } from 'semantic-ui-react'
-
-
 
 export default class ChampionsContainer extends React.Component {
+  state={
+    // ???
+  }
+
   render() {
-    // console.log(this.props.history)
     return(
       <div id='champions-container'>
         <ChampionSearchBar />

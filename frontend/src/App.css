@@ -458,18 +458,18 @@ body{
 Champions page
 --------------------------------------------*/
 #champions-container{
-  position: relative;
+  position: absolute;
   background-color: rgba(0, 0, 0, 0.6);
   background-attachment: fixed;
   width: 100vw;
-  top: -5vh;
-  padding: 10vh 0;
+  top: 0px;
 }
 
 #champions-card-container {
-  width: 1200px;
+  width: calc(100vw - 330px);
+  margin: 30px 30px;
   position: relative;
-  left: 400px;
+  left: 300px;
 }
 
 #champion-search-bar-container {

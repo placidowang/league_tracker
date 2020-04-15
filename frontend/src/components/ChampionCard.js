@@ -5,7 +5,6 @@ import { Card, Image} from 'semantic-ui-react'
 
 class ChampionCard extends React.Component {
 
-
   render() {
     return(
       <Card
@@ -24,7 +23,7 @@ class ChampionCard extends React.Component {
             <div className='role-icons'>
               {this.props.champion.roles.map(role =>
                 <div style={{zIndex: 1}}>
-                  <img size='medium' style={{height: '100px', width: '100px'}} src={`./images/role-icons/${role.toLowerCase()}-icon-transparent-bg.png`} />
+                  <img size='medium' style={{height: '100px', width: '100px'}} src={`./images/role-icons/${role.toLowerCase()}-icon-transparent-bg.png`} alt={this.props.champion.name} />
                   <h3 style={{position:'relative', top:'-40px'}}>{role.toUpperCase()}</h3>
                 </div>)}
             </div>

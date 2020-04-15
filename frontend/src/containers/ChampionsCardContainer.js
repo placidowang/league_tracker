@@ -3,14 +3,8 @@ import ChampionCard from '../components/ChampionCard.js'
 import { Card, Placeholder } from 'semantic-ui-react'
 
 const placeholders = []
-for (let i = 0; i < 16; i++) {
+for (let i = 0; i < 148; i++) {
   placeholders.push(
-    // <Grid.Column >
-    //   <Placeholder style={{width: 150, height: 150}}>
-    //     <Placeholder.Image />
-    //     <Placeholder.Line />
-    //   </Placeholder>
-    // </Grid.Column>
     <Card>
       <Card.Content>
         <Placeholder>
@@ -45,14 +39,17 @@ class ChampionsCardContainer extends React.Component {
   render() {
     return(
       <div id="champions-card-container">
-          <Card.Group itemsPerRow={4}>
+          <Card.Group
+          //  itemsPerRow={4}
+           >
             {this.props.champions.length > 0
               ? this.props.champions.map(champion =>
                 <ChampionCard
                   history={this.props.history}
                   champion={champion}
                   setChampionId={this.props.setChampionId} />)
-              : this.generatePlaceholderRows(placeholders, 4)}
+              // : this.generatePlaceholderRows(placeholders, 4)}
+              : placeholders}
           </Card.Group>
       </div>
     )
