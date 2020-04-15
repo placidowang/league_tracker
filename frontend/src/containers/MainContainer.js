@@ -16,13 +16,13 @@ export default class MainContainer extends React.Component {
       summonerProfile: {}, // setState when searching API for a specific summoner profile
       champions: [],
       displayChampions: [],
-      // championId: null,
       displayChampion: {},
       display_message: false,
       message_class: "",
       message_text: "",
       login_status: false,
-      searchTerm: "",
+      summoner: {},
+      summonerLoginStatus: {errors: "Please Login!"}
     }
   }
 
@@ -33,8 +33,7 @@ export default class MainContainer extends React.Component {
     .then(champions => {
       this.setState({
         champions: champions,
-        displayChampions: champions,
-        summonerProfile: {}
+        displayChampions: champions
       },
       )
     })
@@ -53,7 +52,8 @@ export default class MainContainer extends React.Component {
       this.setState({
         display_message: false,
         message_class: "",
-        message_text: ""
+        message_text: "",
+        summoner: {}
       })
     }, 3000);;
   }
@@ -69,15 +69,30 @@ export default class MainContainer extends React.Component {
   
 
 
-  searchSummoner = () => {
-    // console.log('test')
+  // searchSummoner = () => {
+  //   let obj = {
+  //     method: "GET",
+  //     headers: {
+  //       Authorization: `Bearer ${localStorage.token}`
+  //     }
+  //   }
+  //   fetch('http://localhost:3000/search_summoner',obj)
+  //     .then(resp => resp.json())
+  //     .then(summoner => console.log(summoner))
+  // }
+
+  searchSummoner = (summonerName) => {
     let obj = {
-      method: "GET",
+      method: "POST",
       headers: {
+        "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.token}`
-      }
+      },
+      body: JSON.stringify({
+        summonerName
+      })
     }
-    fetch('http://localhost:3000/search_summoner', obj)
+    fetch('http://localhost:3000/search_summoner',obj)
       .then(resp => resp.json())
       .then(summoner => console.log(summoner))
   }
@@ -89,9 +104,24 @@ export default class MainContainer extends React.Component {
 
   }
 
+  checkForLogin = () => {
+    let obj = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    }
+    fetch("http://localhost:3000/summoner_profiles",obj)
+    .then(res => res.json())
+    .then(data => {
+      let summonerLoginStatus = data.errors ? {errors: data.errors} : {}
+      this.setState({summonerLoginStatus})
+    })
+  }
+
   render() {
     return(
-      <Router >
+      <Router>
         <div>
           <div 
             className={`${this.state.message_class} message`} 
@@ -99,21 +129,22 @@ export default class MainContainer extends React.Component {
             >
             {this.state.display_message ? <h4>{this.state.message_text}</h4> : "" }
           </div>
-          <NavBar displayMessage = {this.displayMessage} login_status = {this.state.login_status}/>
+          <NavBar displayMessage = {this.displayMessage} login_status = {this.state.login_status} checkForLogin = {this.checkForLogin}/>
           <Route exact path = "/login" render = {(routerProps) => <Login {...routerProps} displayMessage = {this.displayMessage}/>} /> 
           <Route exact path = "/signup" component = {SignUp} /> 
-
-          
-
           <Route exact path = "/champion" render = {(routerProps) => <ChampionInfo {...routerProps} displayChampion={this.state.displayChampion}/>} /> 
-          <Route exact path = "/summoner" render = {(routerProps) => <SummonerContainer {...routerProps} searchSummoner={this.searchSummoner} searchValue={this.searchValue} searchTerm={this.state.searchTerm}/>} />
-
-          <Route exact path = "/champions" render = {(routerProps) => 
-            <ChampionsContainer 
-              {...routerProps}
-              champions={this.state.displayChampions}
-              setChampionId={this.setChampionId}
-            />}/> 
+          <Route exact path = "/summoner" render = {(routerProps) => 
+            <SummonerContainer {...routerProps} 
+              searchSummoner = {this.searchSummoner} 
+              summoner = {this.state.summoner}
+              summonerLoginStatus = {this.state.summonerLoginStatus}
+            />}/>
+            <Route exact path = "/champions" render = {(routerProps) => 
+              <ChampionsContainer 
+                {...routerProps}
+                champions={this.state.displayChampions}
+                setChampionId={this.setChampionId}
+              />}/> 
         </div>
         </Router>
     )
