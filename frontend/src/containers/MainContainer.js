@@ -22,6 +22,7 @@ export default class MainContainer extends React.Component {
       message_class: "",
       message_text: "",
       login_status: false,
+      searchTerm: "",
     }
   }
 
@@ -65,6 +66,8 @@ export default class MainContainer extends React.Component {
 
   }
 
+  
+
 
   searchSummoner = () => {
     // console.log('test')
@@ -103,7 +106,7 @@ export default class MainContainer extends React.Component {
           
 
           <Route exact path = "/champion" render = {(routerProps) => <ChampionInfo {...routerProps} displayChampion={this.state.displayChampion}/>} /> 
-          <Route exact path = "/summoner" render = {(routerProps) => <SummonerContainer {...routerProps} searchSummoner={this.searchSummoner}/>} />
+          <Route exact path = "/summoner" render = {(routerProps) => <SummonerContainer {...routerProps} searchSummoner={this.searchSummoner} searchValue={this.searchValue} searchTerm={this.state.searchTerm}/>} />
 
           <Route exact path = "/champions" render = {(routerProps) => 
             <ChampionsContainer 

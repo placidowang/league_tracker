@@ -6,13 +6,13 @@ import SummonerSearchBar from '../components/SummonerSearchBar.js'
 export default class SummonerContainer extends React.Component {
   render() {
 
-    console.log(this.props.searchSummoner())
+    // console.log(this.props)
     
     return(
       <div>
         {/* {this.props.searchSummoner()} */}
         SummonerContainer
-        <SummonerSearchBar />
+        <SummonerSearchBar searchValue={this.props.searchValue}/>
         <ProfileContainer />
         <MatchContainer />
       </div>
