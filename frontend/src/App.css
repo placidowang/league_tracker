@@ -82,7 +82,7 @@ body{
 /* end display message */
 
 
-/* start champion info page */
+/*champion info page */
 
 .champion_main_container{
   position: relative;
@@ -371,6 +371,87 @@ body{
   margin-top: 20vh
 }
 
+/* end champion info page */
+
+/* Summoner page */
+
+.alert_message{
+  background-color: red;
+  border-radius: 10px;
+  width: 80vw;
+  height: 4vh;
+  text-align: center;
+  margin: 0 auto;
+  color: black;
+}
+
+.summoner_main_container{
+  position: relative;
+  top: -5vh;
+  width: 100vw;
+}
+
+.summoner_info_container{
+  border: 1px solid white;
+  border-radius: 10px;
+  width: 90vw;
+  height: 90vh;
+  margin: 0 auto;
+  margin-bottom: 5vh;
+  background-color: rgba(3, 3, 3, 0.85);
+}
+
+.profile_container , .match_container{
+  position: relative;
+  border: 1px solid white;
+  border-radius: 10px;
+  height: 80vh;
+  margin: 5vh 0 0 3vh;
+}
+
+.profile_container{
+  width: 20vw;
+  overflow: hidden;
+}
+
+.match_container{
+  width: 65vw;
+  overflow: auto;
+}
+
+.summoner_info_item{
+  display: inline-block;
+}
+/* Summoner search bar */
+
+.summoner_search_bar_container {
+  position: relative;
+  width: 43vw;
+  margin: 0 auto;
+  top: 2vh;
+}
+
+.search_bar_item {
+  display: inline-block;
+  margin: 0 1vw;
+}
+
+.search_bar{
+  width: 30vw;
+  text-align: center;
+}
+
+.btn{
+  background-color: white;
+  width: 5vw;
+  font-family: Times, Times New Roman, serif;
+  font-size: 0.8vw;
+  transition: ease-in-out 0.2s;
+}
+
+.btn:hover{
+  width: 5.5vw;
+}
 
 
 /*-------------------------------------------

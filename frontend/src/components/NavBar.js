@@ -6,17 +6,6 @@ import SideMenuToggle from './PopOutMenu/SideMenuToggle';
 
 export default class NavBar extends React.Component {
 
-  checkForLogin = () => {
-    let obj = {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    }
-    fetch("http://localhost:3000/summoner_profiles",obj)
-    .then(res => res.json())
-    .then(data => data.errors ? alert(data.errors) : alert(data.message))
-  }
   render() {
     return(
 
@@ -31,7 +20,7 @@ export default class NavBar extends React.Component {
             <ul>
               <li>
                 <button onClick = {() => {
-                  this.checkForLogin()
+                  this.props.checkForLogin()
                   window.scrollTo(0, 0)
                 }}>
                   <NavLink to = "/summoner">Summoner</NavLink>
@@ -53,6 +42,7 @@ export default class NavBar extends React.Component {
                     <button onClick= {() => {
                       window.scrollTo(0, 0)
                       localStorage.clear()
+                      this.props.checkForLogin()
                       this.props.displayMessage("LogOut Success")
                     }}>
                       LogOut
