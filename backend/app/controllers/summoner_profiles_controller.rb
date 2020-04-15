@@ -14,26 +14,67 @@ class SummonerProfilesController < ApplicationController
         # # byebug
         # render json: response
         @summonerName = params[:summonerName]
-        summoner_url = 'https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/'+@summonerName+'?api_key=RGAPI-9e67cfe9-579d-40fe-b050-2214431835af'
+        @APIKEY = "RGAPI-9e67cfe9-579d-40fe-b050-2214431835af"
+        # get summoner info
+        summoner_url = "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/#{+@summonerName}?api_key=#{@APIKEY}"
         response = HTTParty.get(summoner_url)
         summoner = response.parsed_response
 
-        rank_url = 'https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/' + summoner["id"] + '?api_key=RGAPI-9e67cfe9-579d-40fe-b050-2214431835af'
+        # get summoner's champions
+        summoner_champions_url = "https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/#{summoner["id"]}?api_key=#{@APIKEY}"
+        champions_response = HTTParty.get(summoner_champions_url)
+        summoner_champions = champions_response.parsed_response
+
+        # get summoner's ranks 
+        rank_url = "https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/#{summoner["id"]}?api_key=#{@APIKEY}"
         rank_response = HTTParty.get(rank_url)
         summoner_rank = rank_response.parsed_response
 
-        match_url = 'https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/'+summoner["accountId"]+'?api_key=RGAPI-9e67cfe9-579d-40fe-b050-2214431835af'
+        # get summoner's matches 
+        match_url = "https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/#{summoner["accountId"]}?api_key=#{@APIKEY}"
         match_response = HTTParty.get(match_url)
         summoner_match = match_response.parsed_response
         matchArr = []
-        summoner_match["matches"].take(10).each do |match|
-            single_match_url = "https://na1.api.riotgames.com/lol/match/v4/matches/#{match["gameId"]}?api_key=RGAPI-9e67cfe9-579d-40fe-b050-2214431835af"
+        summoner_match["matches"].take(20).each do |match|
+            single_match_url = "https://na1.api.riotgames.com/lol/match/v4/matches/#{match["gameId"]}?api_key=#{@APIKEY}"
             single_match_response = HTTParty.get(single_match_url)
             summoner_single_match = single_match_response.parsed_response
             matchArr << filterMatch(summoner_single_match,summoner["id"])
         end
 
-        render json: matchArr
+        render json: filterData(summoner,summoner_rank,matchArr,summoner_champions)
+    end
+
+    def filterData(summoner,rank,matches,champions)
+        data = {}
+        data["summonerLevel"] = summoner["summonerLevel"]
+        data["profileImage"] = "http://ddragon.leagueoflegends.com/cdn/10.8.1/img/profileicon/#{summoner["profileIconId"]}.png"
+        data["summoerId"] = summoner["id"]
+        data["accountId"] = summoner["accountId"]
+        data["ranks"] = []
+
+        rank.each do |rank| 
+            rank_obj = {}
+            rank_obj["rankType"] = rank["queueType"]
+            rank_obj["tier"] = rank["tier"]
+            rank_obj["rank"] = rank["rank"]
+            rank_obj["wins"] = rank["wins"]
+            rank_obj["losses"] = rank["losses"] 
+            data["ranks"] << rank_obj
+        end
+
+        data["matches"] = matches
+        data["champions"] = []
+
+        champions.each do |champion| 
+            champion_obj = {}
+            champion_obj["championId"] = champion["championId"]
+            champion_obj["championLevel"] = champion["championLevel"]
+            champion_obj["championPoints"] = champion["championPoints"]
+            data["champions"] << champion_obj
+        end
+
+        data 
     end
 
     def filterMatch(match,summonerId)
@@ -62,28 +103,28 @@ class SummonerProfilesController < ApplicationController
 
         participants = match["participants"].find{|participant| participant["participantId"] == participartId}
         
-        matchHash = {}
+        match_obj = {}
         
-        matchHash["gameType"] = match["gameType"]
-        matchHash["gameMode"] = match["gameMode"]
-        matchHash["championId"] = participants["championId"]
-        matchHash["spell1Id"] = spells["#{participants["spell1Id"]}"]
-        matchHash["spell2Id"] = spells["#{participants["spell2Id"]}"]
-        matchHash["win"] = participants["stats"]["win"]
-        matchHash["item0"] = "#{item_image}#{participants["stats"]["item0"]}.png"
-        matchHash["item1"] = "#{item_image}#{participants["stats"]["item1"]}.png"
-        matchHash["item2"] = "#{item_image}#{participants["stats"]["item2"]}.png"
-        matchHash["item3"] = "#{item_image}#{participants["stats"]["item3"]}.png"
-        matchHash["item4"] = "#{item_image}#{participants["stats"]["item4"]}.png"
-        matchHash["item5"] = "#{item_image}#{participants["stats"]["item5"]}.png"
-        matchHash["item6"] = "#{item_image}#{participants["stats"]["item6"]}.png"
-        matchHash["kills"] = participants["stats"]["kills"]
-        matchHash["deaths"] = participants["stats"]["deaths"]
-        matchHash["assists"] = participants["stats"]["assists"]
-        matchHash["goldEarned"] = participants["stats"]["goldEarned"]
-        matchHash["champLevel"] = participants["stats"]["champLevel"]
+        match_obj["gameType"] = match["gameType"]
+        match_obj["gameMode"] = match["gameMode"]
+        match_obj["championId"] = participants["championId"]
+        match_obj["spell1Id"] = spells["#{participants["spell1Id"]}"]
+        match_obj["spell2Id"] = spells["#{participants["spell2Id"]}"]
+        match_obj["win"] = participants["stats"]["win"]
+        match_obj["item0"] = "#{item_image}#{participants["stats"]["item0"]}.png"
+        match_obj["item1"] = "#{item_image}#{participants["stats"]["item1"]}.png"
+        match_obj["item2"] = "#{item_image}#{participants["stats"]["item2"]}.png"
+        match_obj["item3"] = "#{item_image}#{participants["stats"]["item3"]}.png"
+        match_obj["item4"] = "#{item_image}#{participants["stats"]["item4"]}.png"
+        match_obj["item5"] = "#{item_image}#{participants["stats"]["item5"]}.png"
+        match_obj["item6"] = "#{item_image}#{participants["stats"]["item6"]}.png"
+        match_obj["kills"] = participants["stats"]["kills"]
+        match_obj["deaths"] = participants["stats"]["deaths"]
+        match_obj["assists"] = participants["stats"]["assists"]
+        match_obj["goldEarned"] = participants["stats"]["goldEarned"]
+        match_obj["champLevel"] = participants["stats"]["champLevel"]
 
-        matchHash
+        match_obj
     end
 
 end
