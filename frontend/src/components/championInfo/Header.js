@@ -15,7 +15,7 @@ export default class Header extends Component {
                             <div className="item_col champion_roles">
                                 {champion.roles.map(role =>
                                     <div className="champion_info_icons">
-                                        <img size='medium' src={`./images/role-icons/${role.toLowerCase()}.jpeg`} />
+                                        <img size='medium' src={`./images/role-icons/${role.toLowerCase()}.jpeg`} alt={champion.name} />
                                         <h3>{role.toUpperCase()}</h3>
                                     </div>
                                 )}

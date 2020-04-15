@@ -14,14 +14,7 @@ body{
   width: 100vw;
 }
 
-.champions_card_container{
-  position: relative;
-  background-color: rgba(0, 0, 0, 0.6);
-  background-attachment: fixed;
-  width: 100vw;
-  top: -5vh;
-  padding: 10vh 0;
-}
+
 
 /* Login and Signup styling */
 .login_container {
@@ -545,8 +538,33 @@ body{
 /*-------------------------------------------
 Champions page
 --------------------------------------------*/
-#search-bar {
+#champions-container{
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  background-attachment: fixed;
+  width: 100vw;
+  top: 0px;
+}
 
+#champions-card-container {
+  width: calc(100vw - 330px);
+  margin: 30px 30px;
+  position: relative;
+  left: 300px;
+}
+
+#champion-search-bar-container {
+  /* background-color: rgba(0, 0, 0, 0.8); */
+  background-color: rgba(251, 184, 61, 0.8);
+  border-right: solid;
+  border-color: white;
+  border-width: 2px;
+  position: fixed;
+  left: 0px;
+  top: 56px;
+  width: 300px;
+  height: 100vh;
+  padding: 10px;
 }
 
 .champion-card {
@@ -557,6 +575,37 @@ Champions page
   /* overflow: auto; */
 }
 
+.champion-card img.profile-pic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  /* not sure if these 3 are necessary */
+  -webkit-transition: opacity 300ms ease-in-out; 
+  -moz-transition: opacity 300ms ease-in-out;
+  -o-transition: opacity 300ms ease-in-out;
+  /* this one seems necessary */
+  transition: opacity 300ms ease-in-out;
+}
+
+.champion-card div.champion-stats {
+  /* position: absolute; */
+  z-index: 2;
+  margin: -10px;
+  padding: 10px;
+  height: 345px;
+  background-color: rgba(0, 0, 0, 0.7);
+  -webkit-transition: opacity 300ms ease-in-out;
+  -moz-transition: opacity 300ms ease-in-out;
+  -o-transition: opacity 300ms ease-in-out;
+  transition: opacity 300ms ease-in-out;
+  opacity: 0%;
+}
+
+.champion-card div.champion-stats:hover {
+  opacity: 100%;
+}
+
 .champion-card div.role-icons {
   text-align: center;
   justify-content: center;
@@ -564,27 +613,9 @@ Champions page
   /* z-index: -1; */
 }
 
-.champion-card div.stats {
-  margin: 5px;  
-  font-weight: bold;
-}
-
-.champion-card img.profile-pic {
-  position: absolute;
-  top: 0;
-  left: 0;
-  /* not sure if these 3 are necessary */
-  -webkit-transition: opacity 300ms ease-in-out; 
-  -moz-transition: opacity 300ms ease-in-out;
-  -o-transition: opacity 300ms ease-in-out;
-  /* this one seems necessary */
-  transition: opacity 300ms ease-in-out;
-  z-index: 1;
-}
-
-.champion-card img.profile-pic:hover {
-  opacity:25%;
-  /* z-index: 0; */
+.champion-card .champion-name-title {
+  position: flex;
+  z-index: 0;
 }
 
 .champion-card h1.champion-name {
@@ -592,6 +623,7 @@ Champions page
   position: absolute;
   top: 277px;
   margin: 5px;
+  z-index: 0;
 }
 
 .champion-card h5.champion-title {
@@ -599,8 +631,12 @@ Champions page
   position: absolute;
   top: 315px;
   margin: 5px;
+  z-index: 0;
 }
 
+
+
+/* ChampionStatsBar */
 .stat-container {
   display: flex;
   flex-wrap: nowrap;
