@@ -392,9 +392,8 @@ Champions page
 }
 
 #champion-search-bar-container {
-  background-color: rgba(0, 0, 0, 0.8);
+  /* background-color: rgba(0, 0, 0, 0.8); */
   background-color: rgba(251, 184, 61, 0.8);
-
   border-right: solid;
   border-color: white;
   border-width: 2px;
@@ -403,7 +402,7 @@ Champions page
   top: 56px;
   width: 300px;
   height: 100vh;
-
+  padding: 10px;
 }
 
 .champion-card {
@@ -433,6 +432,7 @@ Champions page
   margin: -10px;
   padding: 10px;
   height: 345px;
+  background-color: rgba(0, 0, 0, 0.7);
   -webkit-transition: opacity 300ms ease-in-out;
   -moz-transition: opacity 300ms ease-in-out;
   -o-transition: opacity 300ms ease-in-out;
@@ -442,7 +442,6 @@ Champions page
 
 .champion-card div.champion-stats:hover {
   opacity: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .champion-card div.role-icons {
