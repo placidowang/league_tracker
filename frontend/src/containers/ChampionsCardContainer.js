@@ -22,19 +22,40 @@ for (let i = 0; i < 148; i++) {
 
 class ChampionsCardContainer extends React.Component {
 
-  generateRows = (array, i) => {
-    return(
-      array.slice(i, i+4).map(el => el)
-    )
+  displayWithNoChampions = () => {
+    if (this.props.loadingChampions) {
+    } else {
+      return 'no'
+    }
+  }
+  
+  renderChampions = () => {
+    if (this.props.loadingChampions) {
+      return placeholders
+    } else if (this.props.champions.length > 0) {
+      return this.props.champions.map(champion =>
+        <ChampionCard
+          history={this.props.history}
+          champion={champion}
+          setChampionId={this.props.setChampionId} />)
+    } else {
+      return 'no champions found ._.'
+    }
   }
 
-  generatePlaceholderRows = (array, numberOfRows) => {
-    const rows = []
-    for (let i = 0; i < numberOfRows; i++) {
-      rows.push(this.generateRows(array, i*4))
-    }
-    return rows
-  }
+  // generateRows = (array, i) => {
+  //   return(
+  //     array.slice(i, i+4).map(el => el)
+  //   )
+  // }
+
+  // generatePlaceholderRows = (array, numberOfRows) => {
+  //   const rows = []
+  //   for (let i = 0; i < numberOfRows; i++) {
+  //     rows.push(this.generateRows(array, i*4))
+  //   }
+  //   return rows
+  // }
 
   render() {
     return(
@@ -42,14 +63,14 @@ class ChampionsCardContainer extends React.Component {
           <Card.Group
           //  itemsPerRow={4}
            >
-            {this.props.champions.length > 0
+            {/* {this.props.champions.length > 0
               ? this.props.champions.map(champion =>
                 <ChampionCard
                   history={this.props.history}
                   champion={champion}
                   setChampionId={this.props.setChampionId} />)
-              // : this.generatePlaceholderRows(placeholders, 4)}
-              : placeholders}
+              : this.displayWithNoChampions()} */}
+            {this.renderChampions()}
           </Card.Group>
       </div>
     )
