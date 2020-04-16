@@ -56,7 +56,7 @@ class SummonerProfilesController < ApplicationController
         summoner_match = match_response.parsed_response
         # byebug
         matchArr = []
-        summoner_match["matches"].take(20).each do |match|
+        summoner_match["matches"].take(10).each do |match|
             single_match_url = "https://na1.api.riotgames.com/lol/match/v4/matches/#{match["gameId"]}?api_key=#{@APIKEY}"
             single_match_response = HTTParty.get(single_match_url)
             summoner_single_match = single_match_response.parsed_response
