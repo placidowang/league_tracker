@@ -51,6 +51,7 @@
   width: 15vw;
   height: 13vh;
   margin-left: 2vw;
+  margin-top: 2vh;
 }
 
 .match_items_icon img {
@@ -85,4 +86,13 @@
 .match_champion_icon_image img{
   width: 7vw;
   height: 13vh;
+}
+
+.match_champion_icon{
+  margin-top: 2vh;
+}
+
+.match_champion_icon h1{
+  font-family: Times, Times New Roman, serif;
+  font-size: 2vw;
 }
