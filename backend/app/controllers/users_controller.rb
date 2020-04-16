@@ -23,9 +23,11 @@ class UsersController < ApplicationController
 
     def update
         @user = User.find(params[:id])
-        @user.update(username: "params[:profile]")
-        byebug
-        render json: @user
+        if @user.update(username: "somename")
+            render json: @user
+        else
+            render json: {errors: "can't save"}
+        end
     end
 
     private 
