@@ -15,13 +15,13 @@ class SummonerProfilesController < ApplicationController
         # render json: response
         @summonerName = params[:summonerName]
         # @APIKEY = "RGAPI-d2af8672-1c53-44be-9d07-204f0bf905f4"
-        @APIKEY = "RGAPI-9663a2e8-f8d4-4a35-8511-aae1dd2b4961"
+        @APIKEY = "RGAPI-d2af8672-1c53-44be-9d07-204f0bf905f4"
         # get summoner info
         summoner_url = "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/#{@summonerName}?api_key=#{@APIKEY}"
         response = HTTParty.get(summoner_url)
         summoner = response.parsed_response
         @@summoner = summoner
-
+        # byebug
         # get summoner's champions
         summoner_champions_url = "https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/#{summoner["id"]}?api_key=#{@APIKEY}"
         champions_response = HTTParty.get(summoner_champions_url)
