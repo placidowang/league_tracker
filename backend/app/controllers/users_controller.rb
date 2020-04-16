@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-    skip_before_action :logged_in?, only: [:signup,:login]
+    skip_before_action :logged_in?, only: [:signup,:login,:update]
 
     def signup
         @user = User.new(user_params)
@@ -20,6 +20,13 @@ class UsersController < ApplicationController
             render json: {errors: "Invalid Username or Password"}
         end
     end 
+
+    def update
+        @user = User.find(params[:id])
+        @user.update(username: "params[:profile]")
+        byebug
+        render json: @user
+    end
 
     private 
         def user_params

@@ -20,7 +20,6 @@ export default class NavBar extends React.Component {
             <ul>
               <li>
                 <button onClick = {() => {
-                  this.props.checkForLogin()
                   window.scrollTo(0, 0)
                 }}>
                   <NavLink to = "/summoner">Summoner</NavLink>
