@@ -13,9 +13,8 @@ export default class MatchCard extends React.Component {
                     <h3>{match.win === true ? "WIN" : "LOSS"}</h3> 
                 </div>   
                 <div className="match_items match_info">
-                    <label>Champion:</label>
                     <div className="match_champion_icon">
-                        <p>{champion.name}</p>
+                        <h1>{champion.name}</h1>
                         <div className="match_champion_icon_image match_display_inline_block ">
                             <img src={champion.icon_image} />
                         </div>
