@@ -34,9 +34,12 @@ export default class SummonerContainer extends React.Component {
     return(
       <div>
         <div className="summoner_main_container">
+          {this.props.summonerLoginStatus.errors ? 
+              alert(this.props.summonerLoginStatus.errors)
+          : null}
           <SummonerSearchBar searchSummoner = {this.props.searchSummoner} summoner={this.props.summoner}/>
           <div className="summoner_info_container">
-            <ProfileContainer summoner = {summoner}/>
+            <ProfileContainer summoner = {summoner} checkForLogin={this.props.checkForLogin} addSummonerProfile={this.props.addSummonerProfile}/>
             {true ? 
               <SummonerChampionsContainer
                 champions = {top_champions}

@@ -457,54 +457,67 @@ body{
 
 .summoner_header{
   position: relative;
-  height: 18vh;
+  height: 24vh;
   width: 18vw;
   top: 2vh;
   overflow: hidden;
   border-bottom: 1px solid white ;
   margin: 0 auto;
-}
-
-.summoner_name{
-  position: relative;
-  width: 8vw;
-  float: right;
-  top: 6vh;
-}
-
-.summoner_name h1 {
+  text-align: center;
   font-family: Times, Times New Roman, serif;
-  font-size: 2vw;
-  margin-left: 1vw;
 }
 
-.summoner_name h4 {
-  position: relative;
-  font-family: Times, Times New Roman, serif;
-  font-size: 1vw;
-  margin-left: 1vw;
-  bottom: 2vh;
-}
-
-.summoner_item{
-  display: inline-block;
-}
-
-.summoner_profile_image img {
+.summoner_header img{
   height: 14vh;
   width: 8vw;
   position: relative;
   border-radius: 10px;
 }
 
-.summoner_profile_image{
-  width: 9vw;
-  height: 13vh;
+.add_to_profile_btn{
+  color: white;
+  background-color: rgba(139, 248, 139,0.6);
+  width: 10vw;
+  height: 3vh;
+  font-size: 2vh;
+  font-family: Times, Times New Roman, serif;
+  border-radius: 7px;
+}
+
+.add_to_profile_btn:hover{
+  background-color: rgba(139, 248, 139,0.8);
+}
+
+.add_to_profile_button{
   position: relative;
-  left: 1vw;
-  bottom: 2vh;
-  text-align: center;
+  width: 10vw;
+  margin: 0 auto;
   top: 1vh;
+}
+
+.summoner_name {
+  position: relative;
+  top: -0.3vh;
+}
+
+.summoner_header .summoner_name h1{
+  font-size: 3.5vh;
+  font-family: Times, Times New Roman, serif;
+}
+
+.summoner_header .summoner_level{
+  position: relative;
+  border: 1px solid gold;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  width: 4vw;
+  height: 2vh;
+  margin: 0 auto;
+  top: -1vh
+}
+
+.summoner_header .summoner_level label {
+  font-size: 2vh;
 }
 
 .summoner_ranks{
