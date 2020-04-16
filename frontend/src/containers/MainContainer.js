@@ -26,7 +26,7 @@ export default class MainContainer extends React.Component {
       message_text: "",
       login_status: false,
       summoner: {},
-      summonerLoginStatus: {errors: "Please Login!"},
+      summonerLoginStatus: {},
       matches: [],
       displayMatches: false,
     }
@@ -144,7 +144,25 @@ export default class MainContainer extends React.Component {
     .then(data => {
       let summonerLoginStatus = data.errors ? {errors: data.errors} : {}
       this.setState({summonerLoginStatus})
+      setTimeout(() => {
+        this.setState({summonerLoginStatus: {}})
+      }, 1000);
     })
+  }
+
+  addSummonerProfile = (profile) => {
+    let obj = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        profile
+      })
+    }
+    fetch("http://localhost:3000/users/1",obj)
+    .then(res => res.json())
+    .then(data => console.log(data))
   }
 
   render() {
@@ -186,6 +204,7 @@ export default class MainContainer extends React.Component {
               summoner = {this.state.summoner}
               summonerLoginStatus = {this.state.summonerLoginStatus}
               showMatches={this.showMatches}
+              checkForLogin = {this.checkForLogin}
               matches={this.state.matches}
               displayMatches={this.state.displayMatches}
               showChampions={this.showChampions}
@@ -193,6 +212,7 @@ export default class MainContainer extends React.Component {
               // summonerLoginStatus = {this.state.summonerLoginStatus}
               champions = {this.state.champions}
               setChampionId={this.setChampionId}
+              addSummonerProfile = {this.addSummonerProfile}
             />}
           />
 
