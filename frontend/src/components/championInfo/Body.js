@@ -1,5 +1,6 @@
 import React , {Component} from 'react'
 import Video from './Video'
+import ReactHtmlParser from 'react-html-parser'
 
 export default class Body extends Component {
 
@@ -12,7 +13,7 @@ export default class Body extends Component {
                         {/* may not need id */}
                         <h1>{a.id}</h1>
                         <h3>{a.name}</h3>
-                        <p>- Description: {a.description}</p>
+                        <p>- Description: {ReactHtmlParser(a.description)}</p>
                         <p>- Cooldown: {a.cooldown.join("/")}</p>
                     </div>
                 </div>
@@ -49,7 +50,8 @@ export default class Body extends Component {
                             <div className="media-body">
                                 <h1>{champion.name} Passive</h1>
                                 <h3>{champion.passive.name}</h3>
-                                <p>- Description: {champion.passive.description.replace(/<[^>]*>/g, '')}</p>
+                                {/* <p>- Description: {champion.passive.description.replace(/<[^>]*>/g, '')}</p> */}
+                                <p>- Description: {ReactHtmlParser(champion.passive.description)}</p>
                             </div>
                         </div>
                         {this.displayChampionAbilities(champion.spells)}

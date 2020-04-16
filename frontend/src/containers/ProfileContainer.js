@@ -11,12 +11,13 @@ export default class ProfileContainer extends React.Component {
               <div className="summoner_header">
                 <div className="summoner_name summoner_item">
                   <h1>{summoner.name}</h1>
+                  <h4>Level {summoner.summonerLevel}</h4>
                 </div>
                 <div className="summoner_profile_image summoner_item">
                   <img src={summoner.profileImage} alt={`${summoner.name} profile`}/>
-                  <div className="summoner_level">
+                  {/* <div className="summoner_level">
                     <label>{summoner.summonerLevel}</label>
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div className="summoner_ranks">

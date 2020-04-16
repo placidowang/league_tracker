@@ -84,7 +84,7 @@ export default class MainContainer extends React.Component {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.token}`
+        // Authorization: `Bearer ${localStorage.token}`
       },
       body: JSON.stringify({
         summonerName
@@ -154,7 +154,9 @@ export default class MainContainer extends React.Component {
             <SummonerContainer {...routerProps} 
               searchSummoner = {this.searchSummoner} 
               summoner = {this.state.summoner}
-              summonerLoginStatus = {this.state.summonerLoginStatus}
+              // summonerLoginStatus = {this.state.summonerLoginStatus}
+              champions = {this.state.champions}
+              setChampionId={this.setChampionId}
             />}
           />
 
