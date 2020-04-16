@@ -16,13 +16,12 @@ export default class MainContainer extends React.Component {
       summonerProfile: {}, // setState when searching API for a specific summoner profile
       champions: [],
       displayChampions: [],
+      loadingChampions: true,
       displayChampion: {},
       championsSearchTerm: "",
       championsSortType: "",
-      championsRoleFilters: [
-
-      ],
-      championsDifficultyFilter: [],
+      championsRoleFilters: [],
+      championsDifficultyFilter: "",
       display_message: false,
       message_class: "",
       message_text: "",
@@ -40,41 +39,58 @@ export default class MainContainer extends React.Component {
       this.setState({
         champions: champions,
         displayChampions: champions
-      },
-      )
+      }, ()=>this.setState({ loadingChampions: false }))
     })
   }
 
-  displayMessage = (message) => {
-    let login_status = message === "Login Success" ? true : false
-    this.setState({
-      display_message: true, 
-      message_class: "alert alert-success fade",
-      message_text: message,
-      login_status
-    })
+  filterChampions = () => {
+    let filteredChampions = []
 
-    setTimeout(() => {
-      this.setState({
-        display_message: false,
-        message_class: "",
-        message_text: "",
-        summoner: {}
-      })
-    }, 3000);;
+    // search by name
+    if (this.state.championsSearchTerm) {
+      this.state.champions.forEach(champion => {if (champion.name.toLowerCase().includes(this.state.championsSearchTerm.toLowerCase())) filteredChampions.push(champion)})
+    } else {
+      filteredChampions = this.state.champions
+    }
+
+    // filter by role
+    if (this.state.championsRoleFilters.length > 0) {
+      filteredChampions = filteredChampions.filter(champion => this.checkIfChampionRolesMatchFilter(champion))
+    }
+
+    // filter by difficulty
+    if (this.state.championsDifficultyFilter) {
+      let minDifficulty = 0
+      let maxDifficulty = 0
+      switch (this.state.championsDifficultyFilter) {
+        case 'easy':
+          minDifficulty = 1
+          maxDifficulty = 3
+          break
+        case 'medium':
+          minDifficulty = 4
+          maxDifficulty = 7
+          break
+        case 'hard':
+          minDifficulty = 8
+          maxDifficulty = 10
+          break
+        default:
+      }
+      filteredChampions = filteredChampions.filter(champion => champion.info.difficulty >= minDifficulty && champion.info.difficulty <= maxDifficulty)
+    }
+
+    this.sortChampions(filteredChampions)
   }
 
-  displayChampions = () => {
-    let newDisplayChampions = []
+  sortChampions = (newDisplayChampions=this.state.displayChampions) => {
+    switch (this.state.championsSortType) {
+      case 'alphabetically':
+        newDisplayChampions.sort((a,b) => a.name.localeCompare(b.name))
+        break
+      default:
+    }
 
-    //search
-    newDisplayChampions = this.state.champions.filter(champion => champion.name.toLowerCase().includes(this.state.championsSearchTerm.toLowerCase()))
-
-    //sort
-
-    //filter
-
-    //display
     this.setState({
       displayChampions: newDisplayChampions
     })
@@ -82,18 +98,44 @@ export default class MainContainer extends React.Component {
 
   // consider using debounce
   searchChampions = (term) => {
-    this.setState({ championsSearchTerm: term },()=>this.displayChampions())
+    this.setState({ championsSearchTerm: term },
+      ()=>this.filterChampions())
   }
   
-  sortChampions = (type) => {
-    this.setState({ championsSortType: type })
-    this.displayChampions()
+  sortChampionsByType = (type) => {
+    this.setState({ championsSortType: type },
+      ()=>this.sortChampions())
   }
 
   filterChampionsByRole = (role) => {
-
+    if (this.state.championsRoleFilters.includes(role)) {
+      for (const r of this.state.championsRoleFilters) {
+        if (r === role) {
+          this.state.championsRoleFilters.splice(this.state.championsRoleFilters.indexOf(r), 1)
+        }
+      }
+    } else {
+      this.state.championsRoleFilters.push(role)
+      if (this.state.championsRoleFilters.length > 2) {
+        this.state.championsRoleFilters.shift()
+      }
+    }
+    this.filterChampions()
   }
 
+  checkIfChampionRolesMatchFilter = (champion) => {
+    return this.state.championsRoleFilters.every(r => champion.roles.includes(r))
+  }
+
+  filterChampionsByDifficulty = (difficulty) => {
+    if (this.state.championsDifficultyFilter === difficulty) {
+      this.setState({ championsDifficultyFilter: "" },
+        ()=>this.filterChampions())
+    } else {
+      this.setState({ championsDifficultyFilter: difficulty },
+        ()=>this.filterChampions())
+    }
+  }
 
   // searchSummoner = () => {
   //   let obj = {
@@ -127,7 +169,6 @@ export default class MainContainer extends React.Component {
     fetch(`http://localhost:3000/champions/${championId}`)
     .then(res => res.json())
     .then(champion => this.setState({displayChampion: champion}))
-
   }
 
   checkForLogin = () => {
@@ -143,6 +184,25 @@ export default class MainContainer extends React.Component {
       let summonerLoginStatus = data.errors ? {errors: data.errors} : {}
       this.setState({summonerLoginStatus})
     })
+  }
+
+  displayMessage = (message) => {
+    let login_status = message === "Login Success" ? true : false
+    this.setState({
+      display_message: true, 
+      message_class: "alert alert-success fade",
+      message_text: message,
+      login_status
+    })
+
+    setTimeout(() => {
+      this.setState({
+        display_message: false,
+        message_class: "",
+        message_text: "",
+        summoner: {}
+      })
+    }, 3000);;
   }
 
   render() {
@@ -190,9 +250,16 @@ export default class MainContainer extends React.Component {
             <ChampionsContainer 
               {...routerProps}
               champions={this.state.displayChampions}
+              loadingChampions={this.state.loadingChampions}
               setChampionId={this.setChampionId}
               searchChampions={this.searchChampions}
               championsSearchTerm={this.state.championsSearchTerm}
+              championsSortType={this.state.championsSortType}
+              championsRoleFilters={this.state.championsRoleFilters}
+              championsDifficultyFilter={this.state.championsDifficultyFilter}
+              sortChampionsByType={this.sortChampionsByType}
+              filterChampionsByRole={this.filterChampionsByRole}
+              filterChampionsByDifficulty={this.filterChampionsByDifficulty}
             />}
           /> 
         </div>
