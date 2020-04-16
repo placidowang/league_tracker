@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   post '/user_signup', to: "users#signup"
   # get '/search_summoner', to: "summoner_profiles#search_summoner"
   post '/search_summoner', to: "summoner_profiles#search_summoner"
+  get '/show_matches', to: "summoner_profiles#show_matches"
 end
