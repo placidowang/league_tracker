@@ -27,7 +27,7 @@ export default class Skins extends Component {
                             <div className="carousel-caption d-none d-md-block">
                                 <h1 className="champion_skin_title">{skins[this.state.skinIndex].name}</h1>
                                 {this.state.skinIndex !== 0 
-                                    ? <button class="skin_btn" onClick = {() => this.setState({display_skin_video: true})}>Video</button>
+                                    ? <button className="skin_btn" onClick = {() => this.setState({display_skin_video: true})}>Video</button>
                                     : null
                                 }
                             </div>

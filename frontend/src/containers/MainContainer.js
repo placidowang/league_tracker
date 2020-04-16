@@ -19,9 +19,7 @@ export default class MainContainer extends React.Component {
       displayChampion: {},
       championsSearchTerm: "",
       championsSortType: "",
-      championsRoleFilters: [
-
-      ],
+      championsRoleFilters: [],
       championsDifficultyFilter: [],
       display_message: false,
       message_class: "",
@@ -200,6 +198,9 @@ export default class MainContainer extends React.Component {
               matches={this.state.matches}
               displayMatches={this.state.displayMatches}
               
+              // summonerLoginStatus = {this.state.summonerLoginStatus}
+              champions = {this.state.champions}
+              setChampionId={this.setChampionId}
             />}
           />
 
