@@ -1,6 +1,6 @@
 class SummonerProfilesController < ApplicationController
 
-    skip_before_action :logged_in?, only: [:search_summoner]
+    skip_before_action :logged_in?, only: [:search_summoner, :show_matches]
 
     def index
         render json: {message: "you're logged in"}
@@ -14,12 +14,14 @@ class SummonerProfilesController < ApplicationController
         # # byebug
         # render json: response
         @summonerName = params[:summonerName]
-        @APIKEY = "RGAPI-9e67cfe9-579d-40fe-b050-2214431835af"
+        # @APIKEY = "RGAPI-d2af8672-1c53-44be-9d07-204f0bf905f4"
+        @APIKEY = "RGAPI-d2af8672-1c53-44be-9d07-204f0bf905f4"
         # get summoner info
-        summoner_url = "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/#{+@summonerName}?api_key=#{@APIKEY}"
+        summoner_url = "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/#{@summonerName}?api_key=#{@APIKEY}"
         response = HTTParty.get(summoner_url)
         summoner = response.parsed_response
-
+        @@summoner = summoner
+        # byebug
         # get summoner's champions
         summoner_champions_url = "https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/#{summoner["id"]}?api_key=#{@APIKEY}"
         champions_response = HTTParty.get(summoner_champions_url)
@@ -31,21 +33,41 @@ class SummonerProfilesController < ApplicationController
         summoner_rank = rank_response.parsed_response
 
         # get summoner's matches 
-        match_url = "https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/#{summoner["accountId"]}?api_key=#{@APIKEY}"
+        # match_url = "https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/#{summoner["accountId"]}?api_key=#{@APIKEY}"
+        # match_response = HTTParty.get(match_url)
+        # summoner_match = match_response.parsed_response
+        # matchArr = []
+        # summoner_match["matches"].take(20).each do |match|
+        #     single_match_url = "https://na1.api.riotgames.com/lol/match/v4/matches/#{match["gameId"]}?api_key=#{@APIKEY}"
+        #     single_match_response = HTTParty.get(single_match_url)
+        #     summoner_single_match = single_match_response.parsed_response
+        #     matchArr << filterMatch(summoner_single_match,summoner["id"])
+        # end
+
+        render json: filterData(summoner,summoner_rank,summoner_champions)
+    end
+
+    def show_matches
+        # get summoner's matches 
+        # byebug 
+        @APIKEY = "RGAPI-d2af8672-1c53-44be-9d07-204f0bf905f4"
+
+        match_url = "https://na1.api.riotgames.com/lol/match/v4/matchlists/by-account/#{@@summoner["accountId"]}?api_key=#{@APIKEY}"
         match_response = HTTParty.get(match_url)
         summoner_match = match_response.parsed_response
+        # byebug
         matchArr = []
-        summoner_match["matches"].take(20).each do |match|
+        summoner_match["matches"].take(10).each do |match|
             single_match_url = "https://na1.api.riotgames.com/lol/match/v4/matches/#{match["gameId"]}?api_key=#{@APIKEY}"
             single_match_response = HTTParty.get(single_match_url)
             summoner_single_match = single_match_response.parsed_response
-            matchArr << filterMatch(summoner_single_match,summoner["id"])
+            matchArr << filterMatch(summoner_single_match, @@summoner["id"])
         end
-
-        render json: filterData(summoner,summoner_rank,matchArr,summoner_champions)
+        # byebug
+        render json: matchArr
     end
 
-    def filterData(summoner,rank,matches,champions)
+    def filterData(summoner,rank,champions)
         data = {}
         data["name"] = summoner["name"]
         data["summonerLevel"] = summoner["summonerLevel"]
@@ -54,14 +76,14 @@ class SummonerProfilesController < ApplicationController
         data["accountId"] = summoner["accountId"]
 
         rank_obj = rank.find{|r| r["queueType"] == "RANKED_SOLO_5x5"}
-        
+
         data["rankType"] = rank_obj["queueType"]
         data["tier"] = rank_obj["tier"]
         data["rankLevel"] = rank_obj["rank"]
         data["wins"] = rank_obj["wins"]
         data["losses"] = rank_obj["losses"] 
 
-        data["matches"] = matches
+        # data["matches"] = matches
         data["champions"] = []
 
         champions.each do |champion| 
@@ -73,6 +95,14 @@ class SummonerProfilesController < ApplicationController
         end
 
         data 
+    end
+
+    def filterMatchData(matches) 
+        # byebug
+
+        data = {}
+        data = matches
+        data
     end
 
     def filterMatch(match,summonerId)

@@ -1,0 +1,11 @@
+.match_card{
+    position: relative;
+    top: 4vh;
+    margin: 0 auto;
+    height: 40vh;
+    width: 50vw;
+    border-style: groove;
+    background: linear-gradient(to right, rgba(195, 165, 104, 0.5), rgba(195, 165, 104, 0));
+    padding: 15px;
+
+  }

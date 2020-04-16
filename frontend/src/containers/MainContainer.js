@@ -27,7 +27,9 @@ export default class MainContainer extends React.Component {
       message_text: "",
       login_status: false,
       summoner: {},
-      summonerLoginStatus: {errors: "Please Login!"}
+      summonerLoginStatus: {},
+      matches: [],
+      displayMatches: false,
     }
   }
 
@@ -137,24 +139,12 @@ export default class MainContainer extends React.Component {
     }
   }
 
-  // searchSummoner = () => {
-  //   let obj = {
-  //     method: "GET",
-  //     headers: {
-  //       Authorization: `Bearer ${localStorage.token}`
-  //     }
-  //   }
-  //   fetch('http://localhost:3000/search_summoner',obj)
-  //     .then(resp => resp.json())
-  //     .then(summoner => console.log(summoner))
-  // }
-
   searchSummoner = (summonerName) => {
     let obj = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.token}`
+        // Authorization: `Bearer ${localStorage.token}`
       },
       body: JSON.stringify({
         summonerName
@@ -163,6 +153,21 @@ export default class MainContainer extends React.Component {
     fetch('http://localhost:3000/search_summoner',obj)
       .then(resp => resp.json())
       .then(summoner => this.setState({summoner}))
+  }
+
+  showMatches = () => {
+    fetch(`http://localhost:3000/show_matches`)
+      .then(resp => resp.json())
+      .then(matches => this.setState({
+          matches,
+          displayMatches: true 
+      }))
+  }
+
+  showChampions = () =>{
+    this.setState({
+      displayMatches: false
+    })
   }
   
   setChampionId = (championId) => {
@@ -183,6 +188,9 @@ export default class MainContainer extends React.Component {
     .then(data => {
       let summonerLoginStatus = data.errors ? {errors: data.errors} : {}
       this.setState({summonerLoginStatus})
+      setTimeout(() => {
+        this.setState({summonerLoginStatus: {}})
+      }, 1000);
     })
   }
 
@@ -203,6 +211,21 @@ export default class MainContainer extends React.Component {
         summoner: {}
       })
     }, 3000);;
+  }
+  
+  addSummonerProfile = (profile) => {
+    let obj = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        profile
+      })
+    }
+    fetch("http://localhost:3000/users/1",obj)
+    .then(res => res.json())
+    .then(data => console.log(data))
   }
 
   render() {
@@ -243,6 +266,16 @@ export default class MainContainer extends React.Component {
               searchSummoner = {this.searchSummoner} 
               summoner = {this.state.summoner}
               summonerLoginStatus = {this.state.summonerLoginStatus}
+              showMatches={this.showMatches}
+              checkForLogin = {this.checkForLogin}
+              matches={this.state.matches}
+              displayMatches={this.state.displayMatches}
+              showChampions={this.showChampions}
+              
+              // summonerLoginStatus = {this.state.summonerLoginStatus}
+              champions = {this.state.champions}
+              setChampionId={this.setChampionId}
+              addSummonerProfile = {this.addSummonerProfile}
             />}
           />
 
