@@ -2,10 +2,13 @@ import React from 'react'
 
 export default class SummonerChampionsContainer extends React.Component {
   render() {
+    // console.log(this.props.showMatches())
     let champions = this.props.champions 
     return(
       <div className = "match_container summoner_info_item">
+        <button onClick={() => this.props.showMatches()}>Show Match History</button>
         <div className="top_champions">
+        
           {
             champions ? champions.map(champion => 
               <div className="top_champion_item" onClick={()=>
@@ -29,7 +32,12 @@ export default class SummonerChampionsContainer extends React.Component {
             : null
           }
         </div>
-      </div>
+        </div>
+      
     )
   }
 }
+
+
+{/* <SummonerChampionsCard setChampionId={this.props.setChampionId} history={this.props.history}/> */}
+      {/* <button onClick={() => this.props.showMatches()}>Show Match History</button> */}

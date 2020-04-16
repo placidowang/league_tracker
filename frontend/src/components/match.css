@@ -1,0 +1,34 @@
+.match_card{
+    position: relative;
+    top: 4vh;
+    margin: 0 auto;
+    margin-bottom: 4vh;
+    height: 40vh;
+    width: 50vw;
+    border-style: groove;
+    background: linear-gradient(to right, rgba(195, 165, 104, 0.5), rgba(195, 165, 104, 0));
+    padding: 15px;
+
+  }
+
+.match_display_inline_block{
+  display: inline-block;
+  /* border: 1px solid white; */
+}
+
+.match_champion_icon_item{
+  overflow: hidden;
+  width: 4vw;
+  height: 13vh;
+  text-align: center;
+  margin-left: 1vw;
+}
+
+.match_champion_icon_image{
+  overflow: hidden;
+}
+
+.match_champion_icon_image img{
+  width: 7vw;
+  height: 13vh;
+}
