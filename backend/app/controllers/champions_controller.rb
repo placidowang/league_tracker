@@ -1,6 +1,6 @@
 class ChampionsController < ApplicationController
   skip_before_action :logged_in?
-  before_action :set_champion
+  # before_action :set_champion, only: [:show]
 
   def index
     champions = Champion.all
@@ -15,6 +15,6 @@ class ChampionsController < ApplicationController
   private
   
   def set_champion
-    # champion = Champion.find(params[:id])
+    champion = Champion.find(params[:id])
   end
 end

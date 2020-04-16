@@ -1,4 +1,5 @@
 import React , {Component} from 'react' 
+import ChampionStatBars from '../ChampionStatBars.js'
 
 export default class Header extends Component {
     render(){
@@ -9,31 +10,21 @@ export default class Header extends Component {
                 <div className="champion_info">
                     <h3>{champion.title.toUpperCase()}</h3>
                     <label className="champion_name">{champion.name}</label>
-                    <div className="row ">
-                        <div className="col">
-                            <div className="item_col">
-                                <label className="info">Roles: {champion.roles.join(", ")}</label>
-                                <br/>
-                                <br/>
-                                <label className="info">Partype: {champion.partype}</label>
+                    <div className="item_container">
+                        <div className="item_main_col">
+                            <div className="item_col champion_roles">
+                                {champion.roles.map(role =>
+                                    <div className="champion_info_icons">
+                                        <img size='medium' src={`./images/role-icons/${role.toLowerCase()}.jpeg`} alt={champion.name} />
+                                        <h3>{role.toUpperCase()}</h3>
+                                    </div>
+                                )}
                             </div>
                             <div className="item_col">
-                                <label className="info">
-                                    Attack: {champion.info.attack}
-                                </label>
-                                <br/>
-                                <label className="info">
-                                    Defense: {champion.info.defense}
-                                </label>
-                                <br/>
-                                <label className="info">
-                                    Magic: {champion.info.magic}
-                                </label>
-                                <br/>
-                                <label className="info">Difficulty: {champion.info.difficulty}</label>
+                                <ChampionStatBars info={champion.info} />
                             </div>
                         </div>
-                        <div className="champion_blurd col ">
+                        <div className="champion_blurd item_main_col ">
                             <p>{champion.blurb}</p>
                         </div>
                     </div>

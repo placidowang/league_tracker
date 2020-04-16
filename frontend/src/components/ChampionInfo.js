@@ -28,7 +28,7 @@ export default class ChampionInfo extends Component {
     render(){
         let champion = this.props.displayChampion
         return(
-            <div>
+            <div className="champion_main_container">
                 {this.displayChampion(champion)}
             </div>
         )

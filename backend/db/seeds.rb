@@ -8,6 +8,7 @@ champions = JSON.parse(File.read(path))['champions']
 SummonerProfile.destroy_all
 Champion.destroy_all
 SummonerProfileChampionJoiner.destroy_all
+User.destroy_all
 
 champs = []
 champions.each do |champion|

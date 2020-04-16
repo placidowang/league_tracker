@@ -9,6 +9,7 @@ export default class Body extends Component {
                 <div className="media position-relative ability">
                     <img src={a.image} className="mr-3" alt="ability"/>
                     <div className="media-body">
+                        {/* may not need id */}
                         <h1>{a.id}</h1>
                         <h3>{a.name}</h3>
                         <p>- Description: {a.description}</p>
@@ -26,6 +27,7 @@ export default class Body extends Component {
                 <div className="champion_info_container">
                     <h1 className="champion_info_title">STATS</h1>
                     {Object.keys(champion.stats).map(key => <label><strong>{key.charAt(0).toUpperCase() + key.replace(/^\w/, "")}</strong>: {champion.stats[key]}</label>)}
+                    <label><strong>Resourcetype</strong>: {champion.partype}</label>
                 </div>
                 <div className="champion_info_container">
                     <h1 className="champion_info_title">LORE</h1>
