@@ -8,6 +8,7 @@ export default class SummonerSearchBar extends React.Component {
   }
 
   render() {
+    
     return(
       <div className="summoner_search_bar_container">
         <form onSubmit = {(e) => this.handelSubmit(e)}>

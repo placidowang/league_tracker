@@ -28,7 +28,9 @@ export default class MainContainer extends React.Component {
       message_text: "",
       login_status: false,
       summoner: {},
-      summonerLoginStatus: {errors: "Please Login!"}
+      summonerLoginStatus: {errors: "Please Login!"},
+      matches: [],
+      displayMatches: false,
     }
   }
 
@@ -94,6 +96,8 @@ export default class MainContainer extends React.Component {
 
   }
 
+  
+
 
   // searchSummoner = () => {
   //   let obj = {
@@ -112,7 +116,7 @@ export default class MainContainer extends React.Component {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.token}`
+        // Authorization: `Bearer ${localStorage.token}`
       },
       body: JSON.stringify({
         summonerName
@@ -121,6 +125,15 @@ export default class MainContainer extends React.Component {
     fetch('http://localhost:3000/search_summoner',obj)
       .then(resp => resp.json())
       .then(summoner => this.setState({summoner}))
+  }
+
+  showMatches = () => {
+    fetch(`http://localhost:3000/show_matches`)
+      .then(resp => resp.json())
+      .then(matches => this.setState({
+          matches,
+          displayMatches: this.state.displayMatches === false ? this.state.displayMatches = true : this.state.displayMatches = false
+      }))
   }
   
   setChampionId = (championId) => {
@@ -183,6 +196,10 @@ export default class MainContainer extends React.Component {
               searchSummoner = {this.searchSummoner} 
               summoner = {this.state.summoner}
               summonerLoginStatus = {this.state.summonerLoginStatus}
+              showMatches={this.showMatches}
+              matches={this.state.matches}
+              displayMatches={this.state.displayMatches}
+              
             />}
           />
 
