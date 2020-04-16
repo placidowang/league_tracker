@@ -5,15 +5,60 @@
     margin-bottom: 4vh;
     height: 40vh;
     width: 50vw;
-    border-style: groove;
+    /* border-style: groove; */
     background: linear-gradient(to right, rgba(195, 165, 104, 0.5), rgba(195, 165, 104, 0));
-    padding: 15px;
-
+    font-family: Times, Times New Roman, serif;
+    border-radius: 3px;
+    font-size: 1vw;
+    overflow: hidden;
   }
+
+.match_items{
+  display: inline-block;
+  height: 40vh;
+}
+
+.match_win_loss{
+  position: relative;
+  width: 6vw;
+  text-align: center;
+  overflow: hidden;
+  margin-right: 2vw;
+}
+
+.match_win_loss h3{
+  position: relative;
+  top: 4vh;
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  left: 1vw;
+  font-size: 2vw;
+  font-family: Times, Times New Roman, serif;
+}
+
+.match_info{
+  width: 40vw;
+  overflow: hidden;
+}
 
 .match_display_inline_block{
   display: inline-block;
   /* border: 1px solid white; */
+}
+
+.match_items_icon{
+  overflow: hidden;
+  width: 15vw;
+  height: 13vh;
+  margin-left: 2vw;
+}
+
+.match_items_icon img {
+  width: 3vw;
+  height: 6vh;
+  margin-bottom: 1vh;
+  background-color: black;
+  border-radius: 10px;
 }
 
 .match_champion_icon_item{
@@ -22,6 +67,15 @@
   height: 13vh;
   text-align: center;
   margin-left: 1vw;
+}
+
+.match_champion_icon_item img{
+  width: 3vw;
+  height: 6vh;
+}
+
+.match_champion_icon_item img:last-child{
+  margin-top: 1vh;
 }
 
 .match_champion_icon_image{
