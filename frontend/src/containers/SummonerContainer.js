@@ -39,7 +39,7 @@ export default class SummonerContainer extends React.Component {
           {/* <button onClick={() => this.props.displayMatches === false ? this.props.showChampions() : this.props.showMatches()}>Test</button> */}
           <SummonerSearchBar searchSummoner = {this.props.searchSummoner} summoner={this.props.summoner}/>
          
-            <ProfileContainer summoner = {summoner}/>
+            <ProfileContainer summoner = {summoner} />
             {this.props.displayMatches === false ?
                 <SummonerChampionsContainer 
                 champions = {top_champions}
@@ -58,10 +58,6 @@ export default class SummonerContainer extends React.Component {
               champions={this.props.champions}
               />
             } 
-              
-              
-              
-            
           </div>
         </div>
     </div>

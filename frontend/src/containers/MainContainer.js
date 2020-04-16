@@ -213,20 +213,20 @@ export default class MainContainer extends React.Component {
     }, 3000);;
   }
   
-  addSummonerProfile = (profile) => {
-    let obj = {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        profile
-      })
-    }
-    fetch("http://localhost:3000/users/1",obj)
-    .then(res => res.json())
-    .then(data => console.log(data))
-  }
+  // addSummonerProfile = (profile) => {
+  //   let obj = {
+  //     method: "PATCH",
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: JSON.stringify({
+  //       profile
+  //     })
+  //   }
+  //   fetch("http://localhost:3000/users/1",obj)
+  //   .then(res => res.json())
+  //   .then(data => console.log(data))
+  // }
 
   render() {
     return(
