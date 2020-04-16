@@ -94,21 +94,6 @@ export default class MainContainer extends React.Component {
 
   }
 
-  
-
-
-  // searchSummoner = () => {
-  //   let obj = {
-  //     method: "GET",
-  //     headers: {
-  //       Authorization: `Bearer ${localStorage.token}`
-  //     }
-  //   }
-  //   fetch('http://localhost:3000/search_summoner',obj)
-  //     .then(resp => resp.json())
-  //     .then(summoner => console.log(summoner))
-  // }
-
   searchSummoner = (summonerName) => {
     let obj = {
       method: "POST",
@@ -130,8 +115,14 @@ export default class MainContainer extends React.Component {
       .then(resp => resp.json())
       .then(matches => this.setState({
           matches,
-          displayMatches: this.state.displayMatches === false ? this.state.displayMatches = true : this.state.displayMatches = false
+          displayMatches: true 
       }))
+  }
+
+  showChampions = () =>{
+    this.setState({
+      displayMatches: false
+    })
   }
   
   setChampionId = (championId) => {
@@ -197,6 +188,7 @@ export default class MainContainer extends React.Component {
               showMatches={this.showMatches}
               matches={this.state.matches}
               displayMatches={this.state.displayMatches}
+              showChampions={this.showChampions}
               
               // summonerLoginStatus = {this.state.summonerLoginStatus}
               champions = {this.state.champions}

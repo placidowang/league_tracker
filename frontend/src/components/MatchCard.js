@@ -1,17 +1,30 @@
 import React from 'react';
+import './match.css'
 
 export default class MatchCard extends React.Component {
     render() {
         let match = this.props.match
         // console.log(this.props.match)
+        let champion = this.props.champions.find(champ => champ.key == match.championId)
         return(
             <div>
+            <div className="match_card">
                 <h3>{match.win === true ? "WIN" : "LOSS"}</h3>
+                
+                    <label>Champion:</label>
+                    <p>{champion.name}</p><img src={champion.icon_image} />
+                    <p>KDA: {match.kills}/{match.deaths}/{match.assists}</p>
+                    <p>Gold Earned: {match.goldEarned}</p>
+                
+                
             </div>
+            <br/>
+            <br/>
+            </div>
+            
         )
     }
 }
-
 
 // assists: 8
 // champLevel: 17
