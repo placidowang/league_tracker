@@ -22,6 +22,11 @@ export default class SummonerContainer extends React.Component {
     if(this.props.summoner !== prevProps.summoner){
       this.setUpState()
     }
+    if(this.props.matches !== prevProps.matches){
+      let summoner = this.state.summoner
+      summoner.matches = this.props.matches
+      this.setState({summoner})
+    }
   }
 
   setUpState = () => {
@@ -45,6 +50,7 @@ export default class SummonerContainer extends React.Component {
           }})
         top_champions = top_4_info.sort((a,b) => b.champion_points - a.champion_points)
         summoner.champions = top_champions
+        summoner.matches = []
       }
     } else {
       top_champions = null 
@@ -54,7 +60,7 @@ export default class SummonerContainer extends React.Component {
   }
 
   render() {
-    // console.log(this.state.summoner)
+    console.log(this.state.summoner)
     return(
       <div>
         <div className="summoner_main_container">
@@ -80,8 +86,8 @@ export default class SummonerContainer extends React.Component {
               :
                 this.props.matches[0] ? 
                   <MatchContainer 
-                  matches={this.props.matches} 
-                  champions={this.props.champions}
+                    matches={this.props.matches} 
+                    champions={this.props.champions}
                   />
                 : 
                   <div className = "match_container summoner_info_item loading">

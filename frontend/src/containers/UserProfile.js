@@ -1,13 +1,15 @@
 import React , {Component} from "react" 
 import ProfileContainer from "./ProfileContainer"
 import SummonerChampionsContainer from './SummonerChampionsContainer'
-import MatchContainer from './MainContainer'
+import MatchContainer from './MatchContainer'
 
 export default class UserProfile extends Component{
     constructor(){
         super()
         this.state = {
-            summoner:  {} 
+            summoner:  {} ,
+            showChampions: true,
+            displayProfile: false,
         }
     }
 
@@ -32,32 +34,48 @@ export default class UserProfile extends Component{
         }
         fetch("http://localhost:3000/getProfile",obj)
         .then(res => res.json())
-        .then(data => this.setState({summoner: data.profile}))
+        .then(data => data.profile ? this.setState({summoner: data.profile, displayProfile: true}) : this.setState({displayProfile: false}))
     }
 
     render(){
+        console.log(this.state.summoner)
         return(
             <div>
                 <div className="summoner_main_container">
 
                     <div className="summoner_info_container">
-                        {!!localStorage.token ? 
-                            <div>   
-                                <ProfileContainer summoner = {this.state.summoner}/>
-                                {!this.props.displayMatches ?
-                                    <SummonerChampionsContainer 
-                                    champions = {this.state.summoner.champions}
-                                    setChampionId = {this.props.setChampionId}
-                                    history = {this.props.history}
-                                />
-                                :
-                                <MatchContainer  
-                                matches={this.state.summoner.matches} 
-                                champions={this.state.summoner.champions}
-                                />
-                                } 
+                        {this.state.displayProfile ? 
+                            <div className="champions_match_btn">
+                                <button className="history_match_champions_btn" onClick={() => this.setState({showChampions: !this.state.showChampions})}>{this.state.showChampions ? "Show Match History" : "Show Champion" }</button>
                             </div>
-                            :
+                        : 
+                            null 
+                        }
+                        {localStorage.token ? 
+                            <div>
+                                {this.state.displayProfile ? 
+                                    <div>
+                                        <ProfileContainer summoner = {this.state.summoner}/>
+                                        {this.state.showChampions ?
+                                            <SummonerChampionsContainer 
+                                            champions = {this.state.summoner.champions}
+                                            setChampionId = {this.props.setChampionId}
+                                            history = {this.props.history}
+                                            />
+                                        :
+                                            <MatchContainer  
+                                                matches={this.state.summoner.matches} 
+                                                champions={this.props.champions}
+                                            />
+                                        }
+                                    </div>
+                                : 
+                                    <div className="no_profile">
+                                        <h1>No Profile</h1>
+                                    </div>
+                                }
+                            </div>
+                        :
                             this.handelLogin()
                         }
                     </div>

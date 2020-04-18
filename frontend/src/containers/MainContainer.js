@@ -31,7 +31,6 @@ export default class MainContainer extends React.Component {
       userLogin: false,
       matches: [],
 
-      // displayMatches: false,
     }
   }
 
@@ -223,6 +222,10 @@ export default class MainContainer extends React.Component {
       })
     }
     fetch(`http://localhost:3000/users/0`,obj)
+    .then(res => res.json())
+    .then(data => {
+      data.profile ? alert("Save Success") : alert("Can't Save")
+    }) 
   }
 
   render() {

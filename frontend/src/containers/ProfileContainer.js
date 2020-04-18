@@ -34,7 +34,9 @@ export default class ProfileContainer extends React.Component {
               {this.props.addSummonerProfile ? 
                 <div className="add_to_profile_button">
                   <button className="add_to_profile_btn" onClick={() => {
-                    this.props.addSummonerProfile(summoner)
+                    localStorage.token 
+                      ? this.props.addSummonerProfile(summoner)
+                    : alert("Please Login To Save This Summoner Infomation In Your Profile")
                   }}>
                     Add To Profile
                   </button>
