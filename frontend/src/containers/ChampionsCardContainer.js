@@ -42,21 +42,7 @@ class ChampionsCardContainer extends React.Component {
       return 'no champions found ._.'
     }
   }
-
-  // generateRows = (array, i) => {
-  //   return(
-  //     array.slice(i, i+4).map(el => el)
-  //   )
-  // }
-
-  // generatePlaceholderRows = (array, numberOfRows) => {
-  //   const rows = []
-  //   for (let i = 0; i < numberOfRows; i++) {
-  //     rows.push(this.generateRows(array, i*4))
-  //   }
-  //   return rows
-  // }
-
+  
   render() {
     return(
       <div id="champions-card-container">

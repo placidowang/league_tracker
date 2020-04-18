@@ -7,10 +7,13 @@ class ApplicationController < ActionController::Base
         JWT.encode(payload,"my_Sc")
     end
 
+    def decode_token(payload)
+        JWT.decode(payload,"my_Sc")[0]["user_id"]
+    end
+
     def logged_in?
         headers = request.headers["Authorization"]
         token = headers.split(" ")[1]
-
         begin 
             user_id = JWT.decode(token,"my_Sc")[0]["user_id"]
             user = User.find(user_id)

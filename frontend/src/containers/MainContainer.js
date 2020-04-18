@@ -5,6 +5,7 @@ import Login from '../components/Login'
 import SignUp from '../components/SignUp'
 import NavBar from '../components/NavBar'
 import ChampionInfo from '../components/ChampionInfo'
+import UserProfile from './UserProfile'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 
 
@@ -25,11 +26,12 @@ export default class MainContainer extends React.Component {
       display_message: false,
       message_class: "",
       message_text: "",
-      login_status: false,
       summoner: {},
-      summonerLoginStatus: {},
+      userLoginStatus: {},
+      userLogin: false,
       matches: [],
-      displayMatches: false,
+
+      // displayMatches: false,
     }
   }
 
@@ -40,7 +42,7 @@ export default class MainContainer extends React.Component {
     .then(champions => {
       this.setState({
         champions: champions,
-        displayChampions: champions
+        displayChampions: champions,
       }, ()=>this.setState({ loadingChampions: false }))
     })
   }
@@ -144,7 +146,6 @@ export default class MainContainer extends React.Component {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        // Authorization: `Bearer ${localStorage.token}`
       },
       body: JSON.stringify({
         summonerName
@@ -153,21 +154,15 @@ export default class MainContainer extends React.Component {
     fetch('http://localhost:3000/search_summoner',obj)
       .then(resp => resp.json())
       .then(summoner => this.setState({summoner}))
+      .then(this.showMatches())
   }
 
   showMatches = () => {
     fetch(`http://localhost:3000/show_matches`)
       .then(resp => resp.json())
       .then(matches => this.setState({
-          matches,
-          displayMatches: true 
+          matches
       }))
-  }
-
-  showChampions = () =>{
-    this.setState({
-      displayMatches: false
-    })
   }
   
   setChampionId = (championId) => {
@@ -186,11 +181,13 @@ export default class MainContainer extends React.Component {
     fetch("http://localhost:3000/summoner_profiles",obj)
     .then(res => res.json())
     .then(data => {
-      let summonerLoginStatus = data.errors ? {errors: data.errors} : {}
-      this.setState({summonerLoginStatus})
-      setTimeout(() => {
-        this.setState({summonerLoginStatus: {}})
-      }, 1000);
+      console.log(data)
+      let userLoginStatus = data.errors ? {errors: data.errors} : {}
+      let userLogin = data.errors ? false : true
+      this.setState({userLoginStatus , userLogin})
+      // setTimeout(() => {
+      //   this.setState({userLoginStatus: {}})
+      // }, 1000);
     })
   }
 
@@ -213,20 +210,20 @@ export default class MainContainer extends React.Component {
     }, 3000);;
   }
   
-  // addSummonerProfile = (profile) => {
-  //   let obj = {
-  //     method: "PATCH",
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify({
-  //       profile
-  //     })
-  //   }
-  //   fetch("http://localhost:3000/users/1",obj)
-  //   .then(res => res.json())
-  //   .then(data => console.log(data))
-  // }
+  addSummonerProfile = (profile) => {
+    let obj = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.token}`
+      },
+      body: JSON.stringify({
+        token: localStorage.token,
+        profile
+      })
+    }
+    fetch(`http://localhost:3000/users/0`,obj)
+  }
 
   render() {
     return(
@@ -244,6 +241,15 @@ export default class MainContainer extends React.Component {
             login_status = {this.state.login_status} 
             checkForLogin = {this.checkForLogin}
           />
+
+          <Route exact path = "/profile" render = {(routerProps) => 
+            <UserProfile 
+              {...routerProps} 
+              champions = {this.state.champions}
+              setChampionId={this.setChampionId}
+              userLogin = {this.state.userLogin}
+            />}
+          /> 
 
           <Route exact path = "/login" render = {(routerProps) => 
             <Login 
@@ -266,13 +272,8 @@ export default class MainContainer extends React.Component {
               searchSummoner = {this.searchSummoner} 
               summoner = {this.state.summoner}
               summonerLoginStatus = {this.state.summonerLoginStatus}
-              showMatches={this.showMatches}
-              checkForLogin = {this.checkForLogin}
               matches={this.state.matches}
-              displayMatches={this.state.displayMatches}
-              showChampions={this.showChampions}
-              
-              // summonerLoginStatus = {this.state.summonerLoginStatus}
+
               champions = {this.state.champions}
               setChampionId={this.setChampionId}
               addSummonerProfile = {this.addSummonerProfile}

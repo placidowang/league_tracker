@@ -5,44 +5,72 @@ import SummonerChampionsContainer from './SummonerChampionsContainer'
 import SummonerSearchBar from '../components/SummonerSearchBar.js'
 
 export default class SummonerContainer extends React.Component {
-  render() {
 
+  constructor(){
+    super()
+    this.state = {
+      showChampions: true,
+      summoner: {},
+    }
+  }
 
+  componentDidMount(){
+    this.setUpState()
+  }
+
+  componentDidUpdate(prevProps){
+    if(this.props.summoner !== prevProps.summoner){
+      this.setUpState()
+    }
+  }
+
+  setUpState = () => {
     let summoner = this.props.summoner
-    // let summonerLoginStatus = this.props.summonerLoginStatus
     let champions = this.props.champions 
     let top_champions
-    if(this.props.summoner.name){
-      let champions_info = summoner.champions
-      let top_4 = champions_info.map(champion => `${champion.championId}`)
-      let top_4_info = 
-        champions.filter(champion => top_4.includes(champion.key)).map(champion => {
-          let summoner_champions = champions_info.find(champion_info => champion_info.championId == champion.key)
-          return {
-          id: champion.id, 
-          name: champion.name,
-          title: champion.title.toUpperCase(),
-          icon_image: champion.icon_image, 
-          champion_level: summoner_champions.championLevel,
-          champion_points: summoner_champions.championPoints
-        }})
-      top_champions = top_4_info.sort((a,b) => b.champion_points - a.champion_points)
+    if(summoner.name){
+      if(!summoner.champions[0].name){
+        let champions_info = summoner.champions
+        let top_4 = champions_info.map(champion => `${champion.championId}`)
+        let top_4_info = 
+          champions.filter(champion => top_4.includes(champion.key)).map(champion => {
+            let summoner_champions = champions_info.find(champion_info => champion_info.championId == champion.key)
+            return {
+            id: champion.id, 
+            name: champion.name,
+            title: champion.title.toUpperCase(),
+            icon_image: champion.icon_image, 
+            champion_level: summoner_champions.championLevel,
+            champion_points: summoner_champions.championPoints
+          }})
+        top_champions = top_4_info.sort((a,b) => b.champion_points - a.champion_points)
+        summoner.champions = top_champions
+      }
     } else {
       top_champions = null 
     }
 
+    this.setState({summoner,showChampions: true})
+  }
+
+  render() {
+    // console.log(this.state.summoner)
     return(
       <div>
         <div className="summoner_main_container">
 
           <div className="summoner_info_container">
-          {/* <button onClick={() => this.props.displayMatches === false ? this.props.showChampions() : this.props.showMatches()}>Test</button> */}
-          <SummonerSearchBar searchSummoner = {this.props.searchSummoner} summoner={this.props.summoner}/>
-         
-            <ProfileContainer summoner = {summoner} />
-            {this.props.displayMatches === false ?
+          <SummonerSearchBar searchSummoner = {this.props.searchSummoner} summoner={this.state.summoner}/>
+              {this.state.summoner.name ? 
+                <div className="champions_match_btn">
+                  <button className="history_match_champions_btn" onClick={() => this.setState({showChampions: !this.state.showChampions})}>{this.state.showChampions ? "Show Match History" : "Show Champion" }</button>
+                </div>
+                  : null 
+              }
+            <ProfileContainer summoner = {this.state.summoner} addSummonerProfile = {this.props.addSummonerProfile}/>
+            {this.state.showChampions ?
                 <SummonerChampionsContainer 
-                champions = {top_champions}
+                champions = {this.state.summoner.champions}
                 setChampionId = {this.props.setChampionId}
                 history = {this.props.history}
                 showMatches={this.props.showMatches}
@@ -50,13 +78,18 @@ export default class SummonerContainer extends React.Component {
                 displayMatches={this.props.displayMatches}
               />
               :
-              <MatchContainer 
-              showMatches={this.props.showMatches} 
-              matches={this.props.matches} 
-              displayMatches={this.props.displayMatches}
-              showChampions={this.props.showChampions}
-              champions={this.props.champions}
-              />
+                this.props.matches[0] ? 
+                  <MatchContainer 
+                  matches={this.props.matches} 
+                  champions={this.props.champions}
+                  />
+                : 
+                  <div className = "match_container summoner_info_item loading">
+                    <div class="spinner-border" role="status">
+                      <span class="sr-only"></span> 
+                    </div>
+                    <label className="loading_label">Loading....</label>
+                  </div>
             } 
           </div>
         </div>
@@ -64,14 +97,3 @@ export default class SummonerContainer extends React.Component {
     )
   }
 }
-
-
-
-//  {this.props.summonerLoginStatus.errors ? 
-//               alert(this.props.summonerLoginStatus.errors)
-//           : null}
-//           <SummonerSearchBar searchSummoner = {this.props.searchSummoner} summoner={this.props.summoner}/>
-//           <div className="summoner_info_container">
-//             <ProfileContainer summoner = {summoner} checkForLogin={this.props.checkForLogin} addSummonerProfile={this.props.addSummonerProfile}/>
-//             {true ? 
-//               <SummonerChampionsContainer

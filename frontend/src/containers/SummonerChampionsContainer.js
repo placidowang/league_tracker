@@ -6,7 +6,6 @@ export default class SummonerChampionsContainer extends React.Component {
     let champions = this.props.champions 
     return(
       <div className = "match_container summoner_info_item">
-        <button onClick={() => this.props.showMatches()}>Show Match History</button>
         <div className="top_champions">
         
           {

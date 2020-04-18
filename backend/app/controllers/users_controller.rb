@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-    skip_before_action :logged_in?, only: [:signup,:login,:update]
+    skip_before_action :logged_in?, only: [:signup,:login,:getProfile,:update]
 
     def signup
         @user = User.new(user_params)
@@ -21,17 +21,26 @@ class UsersController < ApplicationController
         end
     end 
 
-    # def update
-    #     @user = User.find(params[:id])
-    #     if @user.update(username: "somename")
-    #         render json: @user
-    #     else
-    #         render json: {errors: "can't save"}
-    #     end
-    # end
+    def getProfile
+        @user = User.find(decode_token(params[:token]))
+        if @user
+            render json: @user     
+        end 
+    end 
+
+    def update
+        # @user = User.find(decode_token(params[:id]))
+        id = decode_token(params[:token])
+        @user = User.find(id)
+        if @user.update(profile: params[:profile])
+            render json: @user
+        else
+            render json: {errors: @user.errors.full_messages}
+        end
+    end
 
     private 
         def user_params
-            params.permit(:username, :password , :password_confirmation) 
+            params(:user).permit(:username, :password , :password_confirmation) 
         end 
 end

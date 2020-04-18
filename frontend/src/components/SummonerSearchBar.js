@@ -4,13 +4,14 @@ export default class SummonerSearchBar extends React.Component {
 
   handelSubmit = (e) => {
     e.preventDefault()
-    this.props.searchSummoner(e.target[0].value.split(" ").join(""))
+    console.log(e.target[0].value.split(" ").join("%20"))
+    this.props.searchSummoner(e.target[0].value.split(" ").join("%20"))
   }
 
   render() {
     
     return(
-      <div className="summoner_search_bar_container">
+      <div className="summoner_search_bar_container"> 
         <form onSubmit = {(e) => this.handelSubmit(e)}>
           <div className="form-group search_bar_item search_bar">
             <input type="text" className="form-control" placeholder="Summoner Name"/>
