@@ -39,7 +39,7 @@ class ChampionsCardContainer extends React.Component {
           champion={champion}
           setChampionId={this.props.setChampionId} />)
     } else {
-      return 'no champions found ._.'
+      return 'No champions here!'
     }
   }
 
