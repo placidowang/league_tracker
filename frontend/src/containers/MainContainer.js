@@ -85,13 +85,16 @@ export default class MainContainer extends React.Component {
     this.sortChampions(filteredChampions)
   }
 
-  sortChampions = (newDisplayChampions=this.state.displayChampions) => {
+  sortChampions = (newDisplayChampions=[...this.state.displayChampions]) => {
+
     switch (this.state.championsSortType) {
       case 'alphabetically':
         newDisplayChampions.sort((a,b) => a.name.localeCompare(b.name))
         break
       default:
+        newDisplayChampions.sort((a,b) => a.id - b.id)
     }
+    console.log(newDisplayChampions)
 
     this.setState({
       displayChampions: newDisplayChampions
@@ -105,8 +108,13 @@ export default class MainContainer extends React.Component {
   }
   
   sortChampionsByType = (type) => {
-    this.setState({ championsSortType: type },
-      ()=>this.sortChampions())
+    if (this.state.championsSortType === type) {
+      this.setState({ championsSortType: "" },
+        ()=>this.sortChampions())
+    } else {
+      this.setState({ championsSortType: type },
+        ()=>this.sortChampions())
+    }
   }
 
   filterChampionsByRole = (role) => {
